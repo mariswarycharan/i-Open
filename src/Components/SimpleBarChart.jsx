@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Sidebar from './Sidebar'; // Import the Sidebar component
 import { BarChart } from '@mui/x-charts/BarChart';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -10,31 +12,36 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-const xLabels = ['Drug 1', 'Drug 2', 'Drug 3', 'Drug 4', 'Drug 5']; // Drug labels
-
-const SimpleBarChart = () => {
+const SimpleBarChart = ({ formData }) => {
   const [tableData, setTableData] = useState([]);
+  const [responseData, setResponseData] = useState(null);
 
   useEffect(() => {
-    // Generate random data for demonstration
-    const getRandomInt = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
+    const fetchData = async () => {
+      console.table("INPUT DATA", formData);
+      try {
+        const response = await axios.post('http://127.0.0.1:8000/submit', formData);
+        setResponseData(response.data);
+
+        // Mapping API response to tableData
+        const mappedTableData = response.data.bar_gragh_data[0].data.map((_, index) => ({
+          name: `Drug ${index + 1}`,
+          totalPackageCost: response.data.bar_gragh_data[0].data[index],
+          consultingCost: response.data.bar_gragh_data[1].data[index],
+          octCharges: response.data.bar_gragh_data[2].data[index],
+          travelFoodCost: response.data.bar_gragh_data[3].data[index],
+          opportunityCost: response.data.bar_gragh_data[4].data[index],
+        }));
+
+        setTableData(mappedTableData);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching data from API', error);
+      }
     };
 
-    const getRandomData = () => {
-      return xLabels.map(label => ({
-        name: label,
-        totalPackageCost: getRandomInt(5000, 300000),
-        consultingCost: getRandomInt(5000, 60000),
-        octCharges: getRandomInt(5000, 20000),
-        travelFoodCost: getRandomInt(5000, 50000),
-        opportunityCost: getRandomInt(5000, 60000),
-      }));
-    };
-
-    // Set initial random data
-    setTableData(getRandomData());
-  }, []);
+    fetchData();
+  }, [formData]);
 
   const calculateTotalCostPerPatient = (row) => {
     const {
@@ -53,6 +60,12 @@ const SimpleBarChart = () => {
     );
   };
 
+  const xLabels = ['Drug 1', 'Drug 2', 'Drug 3', 'Drug 4', 'Drug 5']; // Drug labels
+
+  if (!responseData) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Box display="flex" flexDirection="column" alignItems="center" mt={2}>
       {/* Display "i-Open" text centered above the Bar Chart */}
@@ -65,11 +78,11 @@ const SimpleBarChart = () => {
         width={500}
         height={300}
         series={[
-          { data: tableData.map(item => item.totalPackageCost), color: '#151B54' }, // Data for Total Package Cost
-          { data: tableData.map(item => item.consultingCost), color: '#0041C2' }, // Data for Consulting Cost
-          { data: tableData.map(item => item.octCharges), color: '#1E90FF' }, // Data for OCT Charges
-          { data: tableData.map(item => item.travelFoodCost), color: '#4863A0' }, // Data for Travel and Food Costs
-          { data: tableData.map(item => item.opportunityCost), color: '#79BAEC' }, // Data for Total Opportunity Cost
+          { data: responseData.bar_gragh_data[0].data, color: '#151B54' }, // Data for Total Package Cost
+          { data: responseData.bar_gragh_data[1].data, color: '#0041C2' }, // Data for Consulting Cost
+          { data: responseData.bar_gragh_data[2].data, color: '#1E90FF' }, // Data for OCT Charges
+          { data: responseData.bar_gragh_data[3].data, color: '#4863A0' }, // Data for Travel and Food Costs
+          { data: responseData.bar_gragh_data[4].data, color: '#79BAEC' }, // Data for Total Opportunity Cost
         ]}
         xAxis={[{ data: xLabels, scaleType: 'band' }]}
         options={{ legend: { display: false } }} // Disable legend
@@ -103,6 +116,7 @@ const SimpleBarChart = () => {
               <TableCell align="right">Total Cost/Patient</TableCell>
             </TableRow>
           </TableHead>
+         
           <TableBody>
             {tableData.map((row) => (
               <TableRow key={row.name}>
