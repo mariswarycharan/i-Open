@@ -1,0 +1,18 @@
+/* MainPage.css */
+.main-page {
+    display: flex;
+    height: 100vh; /* Full viewport height */
+}
+
+.sidebar-container {
+    width: 30px; /* Fixed width for the sidebar */
+    background-color: #f4f4f4; /* Background color for the sidebar */
+    padding: 20px; /* Padding inside the sidebar */
+    box-sizing: border-box;
+}
+
+.content-container {
+    flex: 1; /* Main content takes up remaining space */
+    padding: 20px; /* Padding for the main content */
+    box-sizing: border-box;
+}

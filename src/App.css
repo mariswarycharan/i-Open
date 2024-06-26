@@ -1,0 +1,314 @@
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 600px;
+  background-color: #160048;
+  padding: 40px;
+  
+}
+
+.content {
+  flex: 1;
+  background-color: #FFFF99;
+  display: flex;
+  justify-content: center;
+  
+}
+
+h1 {
+  text-align: center;
+}
+
+.content h1 {
+  color:#160048;
+  font-size: 60px;
+}
+
+.sidebar h2 {
+  font-size: 10px;
+  margin-bottom: 10px;
+  color: #FFFF99; 
+}
+
+.sidebar select {
+  font-size: 9px; 
+  width: 40%; 
+  padding: 5px; 
+}
+
+.drug-table {
+  width: 100%;
+  border-collapse: collapse;
+
+}
+
+.drug-table th,
+.drug-table td {
+  border: 1px solid #FFFF99; 
+  padding: 8px;
+  text-align: center;
+  color: #FFFF99; 
+}
+
+.drug-table th {
+  background-color: #160048; 
+}
+
+.sidebar {
+  width: 300px;
+  background-color: #160048;
+  padding: 20px;
+  overflow-y: auto; 
+  max-height: 50vh; 
+  width: 30vh;
+  overflow-y: auto; 
+  transition: width 0.3s ease; 
+  max-height: 100vh;
+}
+
+
+.sidebar {
+  width: 300px;
+  padding: 20px;
+  background-color: #160048;
+ 
+  z-index: 1000;
+}
+
+
+.sidebar div {
+  display: flex;
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+.sidebar h2 {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  margin-right: 10px; 
+  white-space: nowrap; 
+}
+
+.select-dropdown {
+  font-size: 20px; 
+  color: #333; 
+  background-color: #fff; 
+  padding: 10px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px;
+}
+
+.select-dropdown option {
+  font-size: 16px; 
+  color: #333; 
+  background-color: #fff; 
+}
+.select-dropdown:focus {
+  outline: none; 
+  border-color: #007bff; 
+}
+
+.sidebar select {
+  flex: 1; 
+  padding: 10px;
+  border: 1px solid #160048;
+  border-radius: 5px;
+  background-color: #160048;
+}
+
+
+.table-container {
+  margin-top: 10px;
+}
+
+
+.drug-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.drug-table th, .drug-table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  
+}
+
+.drug-table th {
+  background-color: #160048;
+}
+
+
+.sidebar img {
+  display: block;
+  margin: 0 auto 0px; 
+  max-width: 0%; 
+  height: auto;
+}
+
+
+.sidebar .section {
+  margin-bottom: 20px;
+}
+
+.sidebar select:hover,
+.sidebar select:focus {
+    border-color: #160048;
+}
+
+#diseaseSelect option {
+  color: #ccc;
+}
+
+.sidebar select {
+  color: #FFFF99; 
+  background-color: #160048; 
+  padding: 5px; 
+  border-radius: 5px; 
+  border: 1px solid #160048; 
+  font-family: Arial, sans-serif; 
+}
+
+
+.sidebar select option {
+  color: #FFFF99; 
+  background-color: #160048; 
+}
+
+.datatable-dropdown {
+  font-size: 14px; 
+  color: white; 
+  background-color: #333; 
+  padding: 6px; 
+  border: none; 
+  border-radius: 4px; 
+  width: 100%; 
+}
+
+
+.datatable-dropdown option {
+  font-size: 16px; 
+  color: #333; 
+  background-color: white; 
+}
+
+
+.datatable-dropdown:focus {
+  outline: none; 
+  background-color: #555; 
+}
+
+body {
+  font-family: 'Roboto', sans-serif; 
+  color: #333; 
+}
+
+
+.main-page {
+  padding: 20px; 
+}
+
+.MuiFormControlLabel-label {
+  color: #160048; 
+  font-weight: bold;
+}
+
+.i-open-text {
+  color: #160048;
+  text-align: right;
+  font-size: 20%;
+  text-align: right; 
+  margin-right: 100px;
+  padding: 20px;
+}
+
+
+
+
+
+.sidebar {
+  width: 500px;
+  padding: 16px; 
+}
+
+.sidebar .drugs-label {
+  color: #FFFF99;
+  font-size: 5; 
+}
+
+
+.sidebar .custom-autocomplete .MuiInputBase-root {
+  background-color: #160048; 
+  height: 36px; 
+}
+
+
+.sidebar .custom-autocomplete .MuiInputBase-input {
+  color: white; 
+}
+
+
+.sidebar .custom-autocomplete .MuiAutocomplete-tag {
+  max-width: 100%; 
+  color: white; 
+}
+
+
+.sidebar .custom-autocomplete .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow-x: auto; 
+}
+
+
+.sidebar .custom-autocomplete .MuiOutlinedInput-input {
+  padding: 8px;
+}
+.sidebar .autocomplete-container {
+ 
+  align-items: center; 
+  display: flex;
+  font-size:medium
+}
+
+.logo-image {
+  width: 50px; 
+  height: auto; 
+}
+
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px; 
+}
+
+.section-header {
+  font-size: 24px;
+  margin-bottom: 20px; 
+}
+
+.bar-chart-wrapper {
+  margin-top: 20px; 
+}
+
+.main-page {
+  margin-left: 340px; /* Adjust according to your sidebar width */
+  padding: 20px; /* Add padding to ensure content doesn't stick to the edges */
+  /* Add any additional styles as needed */
+}
+
+.i-open-text {
+  font-weight: bold;
+  font-size: 70px;
+  margin-right: 20px; /* Adjust margin as needed to separate from other elements */
+  margin-bottom: 10px; /* Adjust margin as needed to separate from elements below */
+  margin-top: 20px; /* Adds space above the text */
+}
+
+
+

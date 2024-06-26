@@ -1,0 +1,35 @@
+/* Reduce the font size for table cells and headers */
+.table-container {
+    max-width: 60%;
+  }
+  
+  .table-container table {
+    font-size: 0.8rem; /* Smaller font size for table */
+  }
+  
+  .table-container th, .table-container td {
+    padding: 4px 8px; /* Reduced padding */
+  }
+  
+  .table-container th {
+    font-size: 0.8rem; 
+  }
+
+  /* Styles for the data table containing "Molecule" and "Compare" */
+.molecule-compare-table {
+    font-size: 0.5rem; /* Smaller font size for the entire table */
+  }
+  
+  .molecule-compare-table th, .molecule-compare-table td {
+    padding: 6px 12px; /* Reduced padding */
+  }
+  
+  .molecule-compare-table th {
+    font-size: 0.8rem; /* Smaller font size for headers */
+  }
+  
+  .molecule-compare-table select {
+    font-size: 0.8rem; /* Smaller font size for the select element */
+  }
+  
+  

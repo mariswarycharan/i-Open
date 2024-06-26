@@ -1,0 +1,16 @@
+.sidebar {
+  position: fixed; /* Fixed positioning to keep sidebar static */
+  top: 0; /* Place the sidebar at the top of the viewport */
+  left: 0; /* Ensure it's aligned to the left */
+  width: 350px; /* Adjust width as per your design */
+  height: 100%; /* Make it full height of the viewport */
+  background-color: #160048; /* Example background color */
+  padding: 20px; /* Padding for internal content */
+  z-index: 100; /* Ensure sidebar is above other content */
+  box-shadow: none; /* Remove any existing box shadow */
+}
+
+.sidebar {
+  box-shadow: none; /* Remove box shadow */
+}
+

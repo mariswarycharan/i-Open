@@ -1,0 +1,31 @@
+
+.outlined-heading {
+    font-size: 50px; /* Adjust size as needed */
+    font-weight: bold;
+    color: transparent; /* Make the text itself transparent */
+    -webkit-text-stroke: 2px#014d60(0, 81, 255, 0.915); /* Outline thickness and dark blue color */
+    text-transform: uppercase; /* Optional: Makes text uppercase */
+    text-align: center; /* Centers the text within its container */
+    
+    background: linear-gradient(to right, #add8e6, #add8e6); /* Light blue fill color */
+    background-clip: text; /* Standard property */
+    -webkit-background-clip: text; /* WebKit specific property */
+    -webkit-text-fill-color: #05a1c9; /* Light blue color for the text fill */
+}
+
+.total-package-cost-page {
+    position: relative; /* Ensure the container is relative for absolute positioning */
+}
+
+.home-icon-container {
+    position: absolute;
+    top: 0px; /* Adjust top position as needed */
+    right: 10px; /* Adjust right position as needed */
+    cursor: pointer;
+}
+
+.home-icon {
+    width: 70px; /* Adjust width and height of the icon as needed */
+    height: 70px;
+}
+
