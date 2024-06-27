@@ -43,7 +43,7 @@ function AppRouter() {
     const fetchData = async () => {
       console.table("INPUT DATA", formData);
       try {
-        const response = await axios.post('http://127.0.0.1:8000/submit', formData);
+        const response = await axios.post('https://i-open-backend.onrender.com/submit', formData);
         setResponseData(response.data);
 
         console.log(response.data);
