@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BasicPie from './PieChart';
 import './TotalPackageCostPage.css'; 
 import homeIcon from './home.png';
+import { useNavigate } from 'react-router-dom';
+import AppContext from './AppContext';
 //import { Link } from 'react-router-dom';
 
 
 
-const TotalPackageCostPage = ( {responseData, setResponseData} ) => {
+const TotalPackageCostPage = ( ) => {
+    const { responseData, setResponseData } = useContext(AppContext);
+    const navigation = useNavigate();
     
     const navigateToHomePage = () => {
         // Navigate to the main page (home)
-        window.location.href = '/';
+        navigation('/');
     };
 
     return (
@@ -19,7 +23,7 @@ const TotalPackageCostPage = ( {responseData, setResponseData} ) => {
             <div className="home-icon-container" onClick={navigateToHomePage}>
                 <img src={homeIcon} alt="Home" className="home-icon" />
             </div>
-            <BasicPie />
+            <BasicPie responseData={responseData} setResponseData={setResponseData} />
         </div>
     );
 };

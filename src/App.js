@@ -6,6 +6,7 @@ import RightSideButton from './Components/RightSideButton';
 
 
 const App = () => {
+  
   return (
     <div className="app">
       <Sidebar />
@@ -16,6 +17,3 @@ const App = () => {
 };
 
 export default App;
-
-
-

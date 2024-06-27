@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar'; // Import the Sidebar component
 import { BarChart } from '@mui/x-charts/BarChart';
@@ -11,9 +11,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import AppContext from './AppContext';
 
-const SimpleBarChart = ({responseData }) => {
+const SimpleBarChart = () => {
   const [tableData, setTableData] = useState([]);
+  const { responseData, setResponseData } = useContext(AppContext);
 
   useEffect(() => {
     if (responseData) {

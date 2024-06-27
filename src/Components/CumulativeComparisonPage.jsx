@@ -1,15 +1,18 @@
-import React from 'react';
+import React , { useContext } from 'react';
 import SimpleBarChart from './BarChart';
 import './TotalPackageCostPage.css'; 
 import homeIcon from './home.png';
+import AppContext from './AppContext';
+import { useNavigate } from 'react-router-dom';
+const CumulativeComparisonCostPage = ( ) => {
 
+    const { responseData, setResponseData } = useContext(AppContext);
+    const navigation = useNavigate();
 
-
-
-const CumulativeComparisonCostPage = () => {
     const navigateToHomePage = () => {
         // Navigate to the main page (home)
-        window.location.href = '/';
+        // window.location.href = '/';
+        navigation('/');
     };
 
     return (

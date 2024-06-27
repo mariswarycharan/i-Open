@@ -14,6 +14,8 @@ import {
 } from '@mui/material';
 import tableCellClasses from '@mui/material/TableCell/tableCellClasses';
 import './BarChartStyles.css'; // Import the CSS file for additional styles
+import { useContext, useEffect, useState } from 'react';
+import AppContext from './AppContext';
 
 // Styled components with reduced font size and padding
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -66,7 +68,7 @@ const ChartWithTableContainer = styled('div')({
 const DataTableContainer = styled('div')({
   marginTop: '10px',
   width: 'auto',
-   // Rotate the table for a vertical layout
+  // Rotate the table for a vertical layout
   transformOrigin: 'left top', // Rotate around the top left corner
   display: 'flex',
   justifyContent: 'flex-start',
@@ -78,11 +80,78 @@ const chartColors = ['#05a1c9', '#014d60', '#05c7f7'];
 export default function StackedBarChartsWithTables() {
   const [selectedDrug, setSelectedDrug] = React.useState('Drug 2'); // Initial selection for drug 2
 
+  const { responseData, setFormData } = useContext(AppContext);
+
+  const [barChartData, setBarChartData] = React.useState({
+    "First_Drug_data": {
+      "Indirect_Costs": [
+        20700,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Direct_Costs": [
+        3600,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Package_Cost": [
+        366000,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Second_Drug_data": {
+      "Indirect_Costs": [
+        27600,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Direct_Costs": [
+        4800,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Package_Cost": [
+        368000,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  })
+
+  console.log(responseData);
+
+  useEffect(() => {
+    if(!responseData) return;
+    const { First_Drug_data, Second_Drug_data } = responseData
+    setBarChartData((prev) => ({
+      ...prev,
+      First_Drug_data,Second_Drug_data
+    }))
+  }, [responseData])
+
+
   const handleChange = (event) => {
     setSelectedDrug(event.target.value);
+    setFormData(prev => ({
+      ...prev,
+      Second_Drug: event.target.value
+    }))
   };
 
-  const renderDataTable = () => (
+  const renderDataTable1 = () => (
     <DataTableContainer>
       <TableContainer component={Paper} className="rotated-table">
         <Table sx={{ minWidth: 300 }} aria-label="cost table">
@@ -95,10 +164,45 @@ export default function StackedBarChartsWithTables() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {['Indirect cost', 'Direct cost', 'Total Package cost'].map((row, index) => (
-              <StyledTableRow key={row}>
-                <StyledTableCell component="th" scope="row">{row}</StyledTableCell>
-                {[0, 0, 0, 0, 0].map((value, idx) => (
+            {[
+              { label: 'Indirect cost', values: barChartData.First_Drug_data.Indirect_Costs },
+              { label: 'Direct cost', values: barChartData.First_Drug_data.Direct_Costs },
+              { label: 'Total Package cost', values: barChartData.First_Drug_data.Package_Cost }
+            ].map((row, index) => (
+              <StyledTableRow key={row.label}>
+                <StyledTableCell component="th" scope="row">{row.label}</StyledTableCell>
+                {row.values.map((value, idx) => (
+                  <TableCell key={idx} align="center">₹ {value}</TableCell>
+                ))}
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </DataTableContainer>
+  );
+
+  const renderDataTable2 = () => (
+    <DataTableContainer>
+      <TableContainer component={Paper} className="rotated-table">
+        <Table sx={{ minWidth: 300 }} aria-label="cost table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell></StyledTableCell> {/* Empty cell for row labels */}
+              {['1', '2', '3', '4', '5'].map((column) => (
+                <StyledTableCell key={column} align="center">{column}</StyledTableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {[
+              { label: 'Indirect cost', values: barChartData.Second_Drug_data.Indirect_Costs },
+              { label: 'Direct cost', values: barChartData.Second_Drug_data.Direct_Costs },
+              { label: 'Total Package cost', values: barChartData.Second_Drug_data.Package_Cost }
+            ].map((row, index) => (
+              <StyledTableRow key={row.label}>
+                <StyledTableCell component="th" scope="row">{row.label}</StyledTableCell>
+                {row.values.map((value, idx) => (
                   <TableCell key={idx} align="center">₹ {value}</TableCell>
                 ))}
               </StyledTableRow>
@@ -158,13 +262,13 @@ export default function StackedBarChartsWithTables() {
             width={500}
             height={300}
             series={[
-              { data: [1000, 1500, 1300, 1700, 1100], label: 'Indirect Cost', id: 'indirect1', stack: 'total', color: chartColors[0] },
-              { data: [2000, 2300, 1900, 2500, 2100], label: 'Direct Cost', id: 'direct1', stack: 'total', color: chartColors[1] },
-              { data: [3000, 3800, 3200, 4200, 3200], label: 'Total Package Cost', id: 'total1', stack: 'total', color: chartColors[2] },
+              { data: barChartData.First_Drug_data.Indirect_Costs, label: 'Indirect Cost', id: 'indirect1', stack: 'total', color: chartColors[0] },
+              { data: barChartData.First_Drug_data.Direct_Costs, label: 'Direct Cost', id: 'direct1', stack: 'total', color: chartColors[1] },
+              { data: barChartData.First_Drug_data.Package_Cost, label: 'Total Package Cost', id: 'total1', stack: 'total', color: chartColors[2] },
             ]}
             xAxis={[{ data: ['1', '2', '3', '4', '5'], scaleType: 'band' }]}
           />
-          {renderDataTable()}
+          {renderDataTable1()}
         </ChartWithTableContainer>
 
         {/* Second chart with table */}
@@ -174,13 +278,13 @@ export default function StackedBarChartsWithTables() {
             width={500}
             height={300}
             series={[
-              { data: [1200, 1600, 1400, 1800, 1150], label: 'Indirect Cost', id: 'indirect2', stack: 'total', color: chartColors[0] },
-              { data: [2200, 2400, 2000, 2600, 2150], label: 'Direct Cost', id: 'direct2', stack: 'total', color: chartColors[1] },
-              { data: [3400, 4000, 3500, 4400, 3300], label: 'Total Package Cost', id: 'total2', stack: 'total', color: chartColors[2] },
+              { data: barChartData.Second_Drug_data.Indirect_Costs, label: 'Indirect Cost', id: 'indirect2', stack: 'total', color: chartColors[0] },
+              { data: barChartData.Second_Drug_data.Direct_Costs, label: 'Direct Cost', id: 'direct2', stack: 'total', color: chartColors[1] },
+              { data: barChartData.Second_Drug_data.Package_Cost, label: 'Total Package Cost', id: 'total2', stack: 'total', color: chartColors[2] },
             ]}
             xAxis={[{ data: ['1', '2', '3', '4', '5'], scaleType: 'band' }]}
           />
-          {renderDataTable()}
+          {renderDataTable2()}
         </ChartWithTableContainer>
       </ChartContainer>
     </Container>
