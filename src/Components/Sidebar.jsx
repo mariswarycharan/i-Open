@@ -35,8 +35,16 @@ const Sidebar = () => {
                 return { ...item, value: 0 };
             });
             setFormData(prev => ({ ...prev, tableData: newTableData }));
+
         }
-    }, [responseData, formData.tableData, setFormData]);
+        const data = [...tableData];
+        data.forEach((item, index) => {
+            if(responseData?.drug_dosages_side_bar_data[`Drug ${index + 1}`]!== undefined && item.option === 'Yes') {
+                item.value = responseData.drug_dosages_side_bar_data[`Drug ${index + 1}`];
+            }
+        });
+        setTableData(data);
+    }, [responseData]);
 
     const handleChange = (field, value) => {
         setFormData(prev => ({ ...prev, [field]: value }));
@@ -82,7 +90,8 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             <div>
-                <img src={logoImage} alt="Logo" style={{ maxWidth: '30%' }} />
+            <img src={logoImage} alt="Logo" style={{ maxWidth: '30%', height: '60px' }} />
+
             </div>
 
             <div>
@@ -106,6 +115,15 @@ const Sidebar = () => {
             <div>
                 <h2>Government A/C:</h2>
                 <select id="governmentACSelect" value={formData.government_ac || ''} onChange={e => handleChange('government_ac', e.target.value)}>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="None">None</option>
+                </select>
+            </div>
+
+            <div>
+                <h2>Patient Support</h2>
+                <select id="PatientSupportSelect" value={formData.patient_support || ''} onChange={e => handleChange('patient_support', e.target.value)}>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                     <option value="None">None</option>
@@ -210,6 +228,15 @@ const Sidebar = () => {
             <div>
                 <h2>Travel Cost:</h2>
                 <select id="TravelCostSelect" value={`₹ ${formData.travel_cost || 0}`} onChange={e => handleCurrencyChange('travel_cost', e.target.value)}>
+                    {[0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000].map(value => (
+                        <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
+                    ))}
+                </select>
+            </div>
+
+            <div>
+                <h2>Food Cost:</h2>
+                <select id="FoodCostSelect" value={`₹ ${formData.food_cost || 0}`} onChange={e => handleCurrencyChange('food_cost', e.target.value)}>
                     {[0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
