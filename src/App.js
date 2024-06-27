@@ -10,7 +10,6 @@ const App = () => {
     <div className="app">
       <Sidebar />
       <MainPage />
-      
       <RightSideButton />
     </div>
   );

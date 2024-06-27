@@ -6,7 +6,8 @@ import homeIcon from './home.png';
 
 
 
-const TotalPackageCostPage = () => {
+const TotalPackageCostPage = ( {responseData, setResponseData} ) => {
+    
     const navigateToHomePage = () => {
         // Navigate to the main page (home)
         window.location.href = '/';

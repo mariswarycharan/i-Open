@@ -12,36 +12,24 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 
-const SimpleBarChart = ({ formData }) => {
+const SimpleBarChart = ({responseData }) => {
   const [tableData, setTableData] = useState([]);
-  const [responseData, setResponseData] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      console.table("INPUT DATA", formData);
-      try {
-        const response = await axios.post('http://127.0.0.1:8000/submit', formData);
-        setResponseData(response.data);
-
-        // Mapping API response to tableData
-        const mappedTableData = response.data.bar_gragh_data[0].data.map((_, index) => ({
-          name: `Drug ${index + 1}`,
-          totalPackageCost: response.data.bar_gragh_data[0].data[index],
-          consultingCost: response.data.bar_gragh_data[1].data[index],
-          octCharges: response.data.bar_gragh_data[2].data[index],
-          travelFoodCost: response.data.bar_gragh_data[3].data[index],
-          opportunityCost: response.data.bar_gragh_data[4].data[index],
-        }));
-
-        setTableData(mappedTableData);
-        console.log(response.data);
-      } catch (error) {
-        console.error('Error fetching data from API', error);
-      }
-    };
-
-    fetchData();
-  }, [formData]);
+    if (responseData) {
+      const newTableData = xLabels.map((label, index) => {
+        return {
+          name: label,
+          totalPackageCost: responseData.bar_gragh_data[0].data[index],
+          consultingCost: responseData.bar_gragh_data[1].data[index],
+          octCharges: responseData.bar_gragh_data[2].data[index],
+          travelFoodCost: responseData.bar_gragh_data[3].data[index],
+          opportunityCost: responseData.bar_gragh_data[4].data[index],
+        };
+      });
+      setTableData(newTableData);
+    }
+  }, [responseData]);
 
   const calculateTotalCostPerPatient = (row) => {
     const {

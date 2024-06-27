@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import logoImage from './i-open.jpeg';
 import './Sidebar.css';
 
-const Sidebar = ({ formData, setFormData }) => {
+const Sidebar = ({ formData, setFormData , responseData, setResponseData }) => {
 
     const [DiseaseIndication, setDiseaseIndication] = useState('WET AMD'); // State for time horizon selection
     const handleDiseaseIndication = (event) => {
@@ -49,33 +49,67 @@ const Sidebar = ({ formData, setFormData }) => {
         }))
     }
 
-    const initialTableData = [
-        { drug: 'Drug 1', option: 'Yes', originalValue: 3, value: 3, chosenValue: 3 },
-        { drug: 'Drug 2', option: 'Yes', originalValue: 6, value: 6, chosenValue: 6 },
-        { drug: 'Drug 3', option: 'Yes', originalValue: 4, value: 4, chosenValue: 4 },
+    var initialTableData = [
+        { drug: 'Drug 1', option: 'Yes', originalValue: 6, value: 6, chosenValue: 6 },
+        { drug: 'Drug 2', option: 'Yes', originalValue: 8, value: 8, chosenValue: 8 },
+        { drug: 'Drug 3', option: 'Yes', originalValue: 8, value: 8, chosenValue: 8 },
         { drug: 'Drug 4', option: 'Yes', originalValue: 12, value: 12, chosenValue: 12 },
         { drug: 'Drug 5', option: 'Yes', originalValue: 12, value: 12, chosenValue: 12 }
     ];
 
+    // const drug_dosages_side_bar_data = Object.values(responseData.drug_dosages_side_bar_data);
+
+    // useEffect(() => {
+    //     if (responseData) {
+    //         const drug_dosages_side_bar_data = Object.values(responseData.drug_dosages_side_bar_data);
+    //         const newTableData = [
+    //             { drug: 'Drug 1', option: 'Yes', originalValue: 6, value: drug_dosages_side_bar_data[0], chosenValue: 3 },
+    //             { drug: 'Drug 2', option: 'Yes', originalValue: 8, value: drug_dosages_side_bar_data[1], chosenValue: 3 },
+    //             { drug: 'Drug 3', option: 'Yes', originalValue: 8, value: drug_dosages_side_bar_data[2], chosenValue: 5 },
+    //             { drug: 'Drug 4', option: 'Yes', originalValue: 12, value: drug_dosages_side_bar_data[3], chosenValue: 8 },
+    //             { drug: 'Drug 5', option: 'Yes', originalValue: 12, value: drug_dosages_side_bar_data[4], chosenValue: 8 }
+    //         ];
+    //         setTableData(newTableData);
+    //     }
+    // }, [responseData]);
+    
     const [tableData, setTableData] = useState(initialTableData);
 
-    const handleOptionChange = (index, newValue) => {
-        const newData = [...tableData];
-        if (newValue === 'No') {
-            newData[index].value = 0;
-        } else if (newValue === 'Yes') {
-            newData[index].value = newData[index].originalValue;
+
+    useEffect(() => {
+        if (responseData) {
+          const drug_dosages_side_bar_data = Object.values(responseData.drug_dosages_side_bar_data);
+          const newData = tableData.map((item, index) => {
+            if (item.option === 'Yes') {
+              return { ...item, value: drug_dosages_side_bar_data[index] };
+            }
+            return { ...item, value: 0 };
+          });
+          setTableData(newData);
         }
+      }, [responseData]);
+    
+      const handleOptionChange = (index, newValue) => {
+        const newData = [...tableData];
         newData[index].option = newValue;
+        newData[index].value = newValue === 'Yes' ? newData[index].value : 0;
         setTableData(newData);
-    };
+    
+        const drugs_selected_new = newData
+          .filter(item => item.option === 'Yes')
+          .map(item => item.drug);
+    
+        setFormData(prev => ({
+          ...prev,
+          drugs_selected: drugs_selected_new,
+        }));
+      };
 
     const handleDosageChange = (index, newValue) => {
         const newData = [...tableData];
         newData[index].value = Number(newValue);
         setTableData(newData);
         const drugs_selected = newData.filter(item => item.option === 'Yes').map(item => item.drug);
-        console.log("drugs_selected", drugs_selected);
         setFormData(prev => ({
             ...prev,
             [`drug${index + 1
@@ -85,7 +119,7 @@ const Sidebar = ({ formData, setFormData }) => {
     };
 
 
-    const [ProcedureCost, setProcedureCost] = useState(1000);
+    const [ProcedureCost, setProcedureCost] = useState("₹ 1000");
     const handleProcedureCostChange = (event) => {setProcedureCost(event.target.value);
         const valueWithoutCurrency = event.target.value.replace('₹', '').trim();
         const numericValue = parseInt(valueWithoutCurrency, 10);
@@ -95,47 +129,47 @@ const Sidebar = ({ formData, setFormData }) => {
         }))
     }
 
-    const [OCTCost, setOCTCost] = useState(200);
+    const [OCTCost, setOCTCost] = useState("₹ 200");
     const handleOCTCostChange = (event) => {setOCTCost(event.target.value);
         const valueWithoutCurrency = event.target.value.replace('₹', '').trim();
-        const numericValue = parseInt(valueWithoutCurrency, 10);
+        const numericValue = parseInt(valueWithoutCurrency, 20);
         setFormData(prev=>({
             ...prev,
             oct_cost: numericValue
         }))
     }
 
-    const [ConsultingCharges, setConsultingCharges] = useState(200);
+    const [ConsultingCharges, setConsultingCharges] = useState("₹ 200");
     const handleConsultingChargesChange = (event) => {setConsultingCharges(event.target.value);
         const valueWithoutCurrency = event.target.value.replace('₹', '').trim();
-        const numericValue = parseInt(valueWithoutCurrency, 10);
+        const numericValue = parseInt(valueWithoutCurrency, 20);
         setFormData(prev=>({
             ...prev,
             consulting_charges: numericValue
         }))
     }
 
-    const [MiscellaneousCosts, setMiscellaneousCosts] = useState('₹ 0');
+    const [MiscellaneousCosts, setMiscellaneousCosts] = useState('₹ 100');
     const handleMiscellaneousCostsChange = (event) => {setMiscellaneousCosts(event.target.value);
         const valueWithoutCurrency = event.target.value.replace('₹', '').trim();
-        const numericValue = parseInt(valueWithoutCurrency, 10);
+        const numericValue = parseInt(valueWithoutCurrency, 20);
         setFormData(prev=>({
             ...prev,
             miscellaneous_cost: numericValue
         }))
     }
 
-    const [TravelCost, setTravelCost] = useState('₹ 0');
+    const [TravelCost, setTravelCost] = useState('₹ 100');
     const handleTravelCostChange = (event) => {setTravelCost(event.target.value);
         const valueWithoutCurrency = event.target.value.replace('₹', '').trim();
-        const numericValue = parseInt(valueWithoutCurrency, 10);
+        const numericValue = parseInt(valueWithoutCurrency, 20);
         setFormData(prev=>({
             ...prev,
             travel_cost: numericValue
         }))
     }
 
-    const [LostOpportunityCost, setLostOpportunityCost] = useState('₹ 0');
+    const [LostOpportunityCost, setLostOpportunityCost] = useState('₹ 1000');
     const handleLostOpportunityCostChange = (event) => {setLostOpportunityCost(event.target.value);
         const valueWithoutCurrency = event.target.value.replace('₹', '').trim();
         const numericValue = parseInt(valueWithoutCurrency, 10);
@@ -145,7 +179,7 @@ const Sidebar = ({ formData, setFormData }) => {
         }))
     }
 
-    const [Caregiver, setCaregiver] = useState('₹ 0');
+    const [Caregiver, setCaregiver] = useState('₹ 1000');
     const handleCaregiverChange = (event) => {setCaregiver(event.target.value);
         const valueWithoutCurrency = event.target.value.replace('₹', '').trim();
         const numericValue = parseInt(valueWithoutCurrency, 10);
@@ -221,7 +255,7 @@ const Sidebar = ({ formData, setFormData }) => {
                             <tr key={index}>
                                 <td>{item.drug}</td>
                                 <td >
-                                    <select style={{ width: '200%' }} 
+                                    <select style={{ width: '120%' }} 
                                         value={item.option}
                                         onChange={(e) => handleOptionChange(index, e.target.value)}
                                     >
@@ -232,7 +266,7 @@ const Sidebar = ({ formData, setFormData }) => {
                                 </td>
                                 <td>
                                     {clinicalStatus === 'RWE' ? (
-                                        <select style={{ width: '200%' }} 
+                                        <select style={{ width: '100%' }} 
                                             value={item.value}
                                             onChange={(e) => handleDosageChange(index, e.target.value)}
                                         >
