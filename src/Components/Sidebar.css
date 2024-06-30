@@ -30,9 +30,14 @@
 .drug-table th:nth-child(3),
 .drug-table td:nth-child(2),
 .drug-table td:nth-child(3) {
-    width: 1000px; /* Adjust the width of columns 2 and 3 (Yes/No and Dosage) */
+    width: 200px; /* Adjust the width of columns 2 and 3 (Yes/No and Dosage) */
 }
 
 .drug-table select {
-    width: 100px; /* Adjust the width of the select elements */
+    width: 130px; /* Adjust the width of the select elements */
+}
+
+.drug-table th:nth-child(1),
+.drug-table td:nth-child(1) {
+  width: 130px; 
 }

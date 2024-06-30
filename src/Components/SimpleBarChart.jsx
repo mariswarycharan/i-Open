@@ -64,7 +64,7 @@ const SimpleBarChart = () => {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" mt={2}>
       {/* Display "i-Open" text centered above the Bar Chart */}
-      <Typography variant="h5" align="center" gutterBottom sx={{ fontSize: '1.5rem', mb: 1 }}>
+      <Typography variant="h3" align="center" gutterBottom sx={{ fontSize: '2.5rem', mb: 1 }}>
         i-Open
       </Typography>
 
@@ -136,6 +136,22 @@ const SimpleBarChart = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* Footer Box */}
+      <Box
+        sx={{
+          backgroundColor: '#151B54',
+          color: 'white',
+          padding: '10px',
+          textAlign: 'center',
+          marginTop: '30px',
+          borderRadius: '7px',
+          fontSize: '20px',
+          maxWidth: '1900px', // Adjust width as needed
+        }}
+      >
+        VABYSMO<sup>®</sup> is the FIRST & ONLY FDA-approved treatment designed to BLOCK 2 CAUSES of vision loss (VEGF & Ang-2)
+      </Box>
     </Box>
   );
 };

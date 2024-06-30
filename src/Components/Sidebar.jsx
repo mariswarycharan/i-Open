@@ -162,47 +162,47 @@ const Sidebar = () => {
             </div>
 
             <div className="table-container">
-                <table className="drug-table">
-                    <thead>
-                        <tr>
-                            <th style={{ width: '10000px' }}>Drug</th>
-                            <th style={{ width: '1500px' }}>Yes/No</th>
-                            <th style={{ width: '15000px' }}>Dosage</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {tableData.map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.drug}</td>
-                                <td>
-                                    <select style={{ width: '120%' }}
-                                        value={item.option}
-                                        onChange={(e) => handleOptionChange(index, e.target.value)}
-                                    >
-                                        <option value="Yes">Yes</option>
-                                        <option value="No">No</option>
-                                        <option value="None">None</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    {formData.clinical_status === 'RWE' ? (
-                                        <select style={{ width: '100%' }}
-                                            value={item.value}
-                                            onChange={(e) => handleDosageChange(index, e.target.value)}
-                                        >
-                                            {[...Array(15).keys()].map(n => (
-                                                <option key={n + 1} value={n + 1}>{n + 1}</option>
-                                            ))}
-                                        </select>
-                                    ) : (
-                                        item.value
-                                    )}
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+  <table className="drug-table">
+    <thead>
+      <tr>
+        <th>Drug</th>
+        <th>Yes/No</th>
+        <th>Dosage</th>
+      </tr>
+    </thead>
+    <tbody>
+      {tableData.map((item, index) => (
+        <tr key={index}>
+          <td>{item.drug}</td>
+          <td>
+            <select
+              value={item.option}
+              onChange={(e) => handleOptionChange(index, e.target.value)}
+            >
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="None">None</option>
+            </select>
+          </td>
+          <td>
+            {formData.clinical_status === 'RWE' ? (
+              <select
+                value={item.value}
+                onChange={(e) => handleDosageChange(index, e.target.value)}
+              >
+                {[...Array(15).keys()].map(n => (
+                  <option key={n + 1} value={n + 1}>{n + 1}</option>
+                ))}
+              </select>
+            ) : (
+              item.value
+            )}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
             <div>
                 <h2>Procedure Cost:</h2>
