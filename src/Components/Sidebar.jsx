@@ -3,8 +3,17 @@ import logoImage from './i-open.jpeg';
 import './Sidebar.css';
 import AppContext from './AppContext';
 
+
 const Sidebar = () => {
     const { formData, setFormData, responseData } = useContext(AppContext);
+
+    const handleTimeHorizonChange = (e) => {
+        const newTimeHorizon = e.target.value;
+        setFormData(prev => ({
+            ...prev,
+            time_horizon: newTimeHorizon,
+        }));
+    };
 
     var initialTableData = [
         { drug: 'Drug 1', option: 'Yes', originalValue: 6, value: 6, chosenValue: 6 },
@@ -87,6 +96,8 @@ const Sidebar = () => {
         setFormData(prev => ({ ...prev, [field]: numericValue }));
     };
 
+    
+
     return (
         <div className="sidebar">
             <div>
@@ -104,13 +115,17 @@ const Sidebar = () => {
             </div>
 
             <div>
-                <h2>Time Horizon(in years):</h2>
-                <select id="timeHorizonSelect" value={formData.time_horizon || ''} onChange={e => handleChange('time_horizon', e.target.value)}>
-                    {[1, 2, 3, 4, 5, 'None'].map(value => (
+            <h2>Time Horizon (in years):</h2>
+            <select
+                    id="timeHorizonSelect"
+                    value={formData.time_horizon || ''}
+                    onChange={handleTimeHorizonChange}
+                >
+                    {[1, 2, 3, 4, 5].map(value => (
                         <option key={value} value={value}>{value}</option>
                     ))}
                 </select>
-            </div>
+        </div>
 
             <div>
                 <h2>Government A/C:</h2>
@@ -150,9 +165,9 @@ const Sidebar = () => {
                 <table className="drug-table">
                     <thead>
                         <tr>
-                            <th style={{ width: '100%' }}>Drug</th>
-                            <th style={{ width: '100%' }}>Yes/No</th>
-                            <th style={{ width: '100%' }}>Dosage</th>
+                            <th style={{ width: '10000px' }}>Drug</th>
+                            <th style={{ width: '1500px' }}>Yes/No</th>
+                            <th style={{ width: '15000px' }}>Dosage</th>
                         </tr>
                     </thead>
                     <tbody>

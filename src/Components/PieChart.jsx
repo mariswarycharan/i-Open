@@ -14,9 +14,9 @@ import { useContext, useEffect, useState } from 'react';
 
 // Define colors
 const colors = {
-    packageCost: '#014d60', // Dark blue
-    directCost: '#05a1c9', // Main blue
-    indirectCosts: '#05c7f7', // Light blue
+    packageCost: '#151B54', // Dark blue
+    directCost: '#0041C2', // Main blue
+    indirectCosts: '#1E90FF', // Light blue
 };
 
 // Define a custom theme
@@ -161,7 +161,7 @@ export default function PieChartWithDataTable() {
                     ))}
                 </Box>
                 <TableContainer component={Paper}>
-                    <Table sx={{ minWidth: 500 }} aria-label="customized table">
+                    <Table sx={{ minWidth: 200 }} aria-label="customized table">
                         <TableHead>
                             <TableRow>
                                 <StyledTableCell>Total Package Costs @ Year 1</StyledTableCell>
@@ -192,8 +192,8 @@ export default function PieChartWithDataTable() {
                         color: 'white',
                         padding: '10px',
                         textAlign: 'center',
-                        marginTop: '50px',
-                        borderRadius: '5px',
+                        marginTop: '30px',
+                        borderRadius: '7px',
                         fontSize: '20px'
                     }}
                 >

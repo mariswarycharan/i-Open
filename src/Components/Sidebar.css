@@ -14,3 +14,25 @@
   box-shadow: none; /* Remove box shadow */
 }
 
+
+
+.drug-table {
+  width: 2000px; /* Table takes full width of the content area */
+}
+
+.drug-table th,
+.drug-table td {
+  padding: 100px;
+  text-align: center;
+}
+
+.drug-table th:nth-child(2),
+.drug-table th:nth-child(3),
+.drug-table td:nth-child(2),
+.drug-table td:nth-child(3) {
+    width: 1000px; /* Adjust the width of columns 2 and 3 (Yes/No and Dosage) */
+}
+
+.drug-table select {
+    width: 100px; /* Adjust the width of the select elements */
+}

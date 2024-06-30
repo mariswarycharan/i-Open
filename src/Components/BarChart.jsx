@@ -20,10 +20,10 @@ import AppContext from './AppContext';
 // Styled components with reduced font size and padding
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#05a1c9',
+    backgroundColor: '#151B54',
     color: theme.palette.common.white,
     fontSize: '0.75rem', // Smaller font size for the header
-    padding: '6px 10px', // Reduced padding
+    padding: '2px 4px', // Reduced padding
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: '0.75rem', // Smaller font size for the body cells
@@ -33,7 +33,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
-    backgroundColor: '#f1f1f1',
+    backgroundColor: '#ffffff',
   },
   '&:nth-of-type(even)': {
     backgroundColor: '#ffffff',
@@ -42,10 +42,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const Container = styled('div')({
   display: 'flex',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  alignItems: 'center',
-  width: '100%',
+  flexDirection: 'row',
+  justifyContent: 'flex-start', // Align items horizontally
+  alignItems: 'flex-start', // Align items vertically
+  width: '60%',
+  padding: '20px',
 });
 
 const ChartContainer = styled('div')({
@@ -72,10 +73,11 @@ const DataTableContainer = styled('div')({
   transformOrigin: 'left top', // Rotate around the top left corner
   display: 'flex',
   justifyContent: 'flex-start',
+  marginBottom: '20px'
 });
 
 // Bar chart colors
-const chartColors = ['#05a1c9', '#014d60', '#05c7f7'];
+const chartColors = ['#151B54', '#0041C2', '#1E90FF'];
 
 export default function StackedBarChartsWithTables() {
   const [selectedDrug, setSelectedDrug] = React.useState('Drug 2'); // Initial selection for drug 2
@@ -288,5 +290,6 @@ export default function StackedBarChartsWithTables() {
         </ChartWithTableContainer>
       </ChartContainer>
     </Container>
+    
   );
 }
