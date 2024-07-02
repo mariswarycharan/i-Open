@@ -1,6 +1,6 @@
 /* Reduce the font size for table cells and headers */
 .table-container {
-    max-width: 60%;
+    max-width: 70%;
   }
   
   .table-container table {
@@ -21,7 +21,7 @@
   }
   
   .molecule-compare-table th, .molecule-compare-table td {
-    padding: 6px 12px; /* Reduced padding */
+    padding: 3px 6px; /* Reduced padding */
   }
   
   .molecule-compare-table th {
@@ -30,6 +30,15 @@
   
   .molecule-compare-table select {
     font-size: 0.8rem; /* Smaller font size for the select element */
+  }
+  
+  .ChartContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Adjust alignment as needed */
+    gap: 20px; /* Adjust the gap between charts and table */
+    width: 100%;
+    margin-top: 20px; /* Adjust top margin */
   }
   
   

@@ -1,35 +1,41 @@
-
+/* Styles for the fixed buttons on the right side */
 .right-side-buttons {
-    position: fixed;
-    top: 10px; /* Adjust top position as needed */
-    right: 20px; /* Adjust right position as needed */
+    position: fixed;  /* Keep buttons fixed to the viewport */
+    top: 10px;        /* Adjust the top position as needed */
+    right: 20px;      /* Adjust the right position as needed */
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    z-index: 999; /* Ensure buttons are above other content if necessary */
+    z-index: 999;     /* Ensure buttons appear above other content */
 }
 
+/* Common button styling */
 .right-side-buttons button,
 .rounded-button {
-    margin-bottom: 10px;
-    background-color: #290086;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
+    margin-bottom: 5px;          /* Space between buttons */
+    background-color: #290086;    /* Button background color */
+    color: white;                 /* Button text color */
+    border: none;                 /* No border */
+    padding: 12px 30px;           /* Increased padding for larger buttons */
+    font-size: 18px;              /* Increased font size for visibility */
+    cursor: pointer;              /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition on hover */
 }
 
+/* Specific rounded button styling */
 .rounded-button {
-    border-radius: 20px; /* Adjust border radius to make buttons more or less rounded */
+    border-radius: 30px;          /* Rounded corners */
 }
 
 .rounded-button:hover {
-    background-color: #1c005c; /* Darker color on hover */
+    background-color: #1c005c;    /* Darker background color on hover */
 }
 
+/* Styling for the "i-Open" text */
 .i-open-text {
     font-weight: bold;
-    font-size: 60px;
-    margin-right: 0px; /* Adjust margin as needed to separate from radio buttons */
-    margin-bottom: 20px; /* Adjust margin as needed */
+    font-size: 50px;
+    margin-right: 0px;           /* Adjusted margin to separate from buttons */
+    margin-bottom: 20px;         /* Margin below the text */
 }
+

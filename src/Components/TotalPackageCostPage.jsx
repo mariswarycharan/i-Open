@@ -4,11 +4,8 @@ import './TotalPackageCostPage.css';
 import homeIcon from './home.png';
 import { useNavigate } from 'react-router-dom';
 import AppContext from './AppContext';
-//import { Link } from 'react-router-dom';
 
-
-
-const TotalPackageCostPage = ( ) => {
+const TotalPackageCostPage = () => {
     const { responseData, setResponseData } = useContext(AppContext);
     const navigation = useNavigate();
     

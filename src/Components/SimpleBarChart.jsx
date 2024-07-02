@@ -11,6 +11,8 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import AppContext from './AppContext';
 
+import './SimpleBarChart.css';
+
 const SimpleBarChart = () => {
   const [tableData, setTableData] = useState([]);
   const { responseData, setResponseData } = useContext(AppContext);
@@ -54,44 +56,49 @@ const SimpleBarChart = () => {
     return <div>Loading...</div>;
   }
 
+  // Find the row with the minimum Total Cost/Patient
+  const minCostPatient = Math.min(...tableData.map(calculateTotalCostPerPatient));
+
   return (
     <Box display="flex" flexDirection="column" alignItems="center" mt={2}>
       {/* Display "i-Open" text centered above the Bar Chart */}
-      <Typography variant="h6" align="center" gutterBottom>
+      <Typography variant="h3" align="center" gutterBottom sx={{ fontSize: '2.5rem', mb: 1 }}>
         i-Open
       </Typography>
 
       {/* Bar Chart */}
-      <BarChart
-        width={500}
-        height={300}
-        series={[
-          { data: responseData.bar_gragh_data[0].data, color: '#151B54' }, // Data for Total Package Cost
-          { data: responseData.bar_gragh_data[1].data, color: '#0041C2' }, // Data for Consulting Cost
-          { data: responseData.bar_gragh_data[2].data, color: '#1E90FF' }, // Data for OCT Charges
-          { data: responseData.bar_gragh_data[3].data, color: '#4863A0' }, // Data for Travel and Food Costs
-          { data: responseData.bar_gragh_data[4].data, color: '#79BAEC' }, // Data for Total Opportunity Cost
-        ]}
-        xAxis={[{ data: xLabels, scaleType: 'band' }]}
-        options={{ legend: { display: false } }} // Disable legend
-      />
+      <Box width={600} height={350} display="flex" justifyContent="center" alignItems="center">
+        <BarChart
+          width={550} // Increased width for better visibility
+          height={300} // Increased height for better range visibility
+          series={[
+            { data: responseData.bar_gragh_data[0].data, color: '#151B54', barThickness: 20 }, // Adjusted bar thickness
+            { data: responseData.bar_gragh_data[1].data, color: '#0041C2', barThickness: 20 },
+            { data: responseData.bar_gragh_data[2].data, color: '#1E90FF', barThickness: 20 },
+            { data: responseData.bar_gragh_data[3].data, color: '#4863A0', barThickness: 20 },
+            { data: responseData.bar_gragh_data[4].data, color: '#79BAEC', barThickness: 20 },
+          ]}
+          xAxis={[{ data: xLabels, scaleType: 'band' }]}
+          options={{ legend: { display: false }, scales: { x: { beginAtZero: true }}}} // Ensure x-axis starts at zero
+        />
+      </Box>
 
       {/* Legend Box */}
-      <Box display="flex" justifyContent="center" alignItems="center" mt={2}>
+      <Box display="flex" justifyContent="center" alignItems="center" mt={1}>
         <Box mr={2} bgcolor="#151B54" width={20} height={20}></Box>
-        <Box mr={2}>Data for Total Package Cost</Box>
+        <Box mr={2}>Total Package Cost</Box>
         <Box mr={2} bgcolor="#0041C2" width={20} height={20}></Box>
-        <Box mr={2}>Data for Consulting Cost</Box>
+        <Box mr={2}>Consulting Cost</Box>
         <Box mr={2} bgcolor="#1E90FF" width={20} height={20}></Box>
-        <Box mr={2}>Data for OCT Charges</Box>
+        <Box mr={2}>OCT Charges</Box>
         <Box mr={2} bgcolor="#4863A0" width={20} height={20}></Box>
-        <Box mr={2}>Data for Travel and Food Costs</Box>
+        <Box mr={2}>Travel and Food Costs</Box>
         <Box mr={2} bgcolor="#79BAEC" width={20} height={20}></Box>
-        <Box>Data for Total Opportunity Cost</Box>
+        <Box>Total Opportunity Cost</Box>
       </Box>
 
       {/* Data Table */}
-      <TableContainer component={Paper} style={{ marginTop: '20px', width: '100%', maxWidth: '1200px' }}>
+      <TableContainer component={Paper} style={{ marginTop: '10px', width: '100%', maxWidth: '1200px', border: '1px solid black' }}>
         <Table sx={{ minWidth: 650 }} size="small" aria-label="sample dense table">
           <TableHead>
             <TableRow>
@@ -106,26 +113,46 @@ const SimpleBarChart = () => {
           </TableHead>
          
           <TableBody>
-            {tableData.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row">
-                  {row.name}
-                </TableCell>
-                <TableCell align="right">{row.totalPackageCost}</TableCell>
-                <TableCell align="right">{row.consultingCost}</TableCell>
-                <TableCell align="right">{row.octCharges}</TableCell>
-                <TableCell align="right">{row.travelFoodCost}</TableCell>
-                <TableCell align="right">{row.opportunityCost}</TableCell>
-                <TableCell align="right">
-                  {calculateTotalCostPerPatient(row)}
-                </TableCell>
-              </TableRow>
-            ))}
+            {tableData.map((row) => {
+              const totalCost = calculateTotalCostPerPatient(row);
+              return (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.totalPackageCost}</TableCell>
+                  <TableCell align="right">{row.consultingCost}</TableCell>
+                  <TableCell align="right">{row.octCharges}</TableCell>
+                  <TableCell align="right">{row.travelFoodCost}</TableCell>
+                  <TableCell align="right">{row.opportunityCost}</TableCell>
+                  <TableCell align="right" style={{ backgroundColor: totalCost === minCostPatient ? '#F08080' : 'inherit' }}>
+                    {totalCost}
+                  </TableCell>
+                </TableRow>
+              );
+            })}
           </TableBody>
         </Table>
       </TableContainer>
+
+      {/* Footer Box */}
+      <Box
+        sx={{
+          backgroundColor: '#151B54',
+          color: 'white',
+          padding: '10px',
+          textAlign: 'center',
+          marginTop: '30px',
+          borderRadius: '7px',
+          fontSize: '20px',
+          maxWidth: '1900px', // Adjust width as needed
+        }}
+      >
+        VABYSMO<sup>®</sup> is the FIRST & ONLY FDA-approved treatment designed to BLOCK 2 CAUSES of vision loss (VEGF & Ang-2)
+      </Box>
     </Box>
   );
 };
 
 export default SimpleBarChart;
+

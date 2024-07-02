@@ -1,18 +1,32 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
-import './RightSideButton.css'; // Import CSS file for styling (optional)
+import React, { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './RightSideButton.css';
+import AppContext from './AppContext';
 
 const RightSideButton = () => {
     const navigate = useNavigate();
+    const { formData } = useContext(AppContext);
+    const [totalPackageCost, setTotalPackageCost] = useState('');
+
+    useEffect(() => {
+        const calculateTotalPackageCost = () => {
+            const timeHorizon = formData.time_horizon || 1; // Default to 1 if not set
+            const totalCost = 1000 * timeHorizon; // Example calculation, replace with your actual logic
+            setTotalPackageCost(totalCost);
+        };
+
+        calculateTotalPackageCost();
+    }, [formData.time_horizon]);
 
     const handleButtonClick = (path) => {
-        navigate(path); // Use navigate to change the route
+        navigate(path);
     };
 
     return (
         <div className="right-side-buttons">
             <button className="rounded-button" onClick={() => handleButtonClick('/total-package-cost')}>
-                Total Package costs @ Year 1
+                Total Package Cost @ Year {formData.time_horizon}
+                
             </button>
             <button className="rounded-button" onClick={() => handleButtonClick('/cumulative-comparison')}>
                 Cumulative Comparison of Costs
@@ -22,4 +36,5 @@ const RightSideButton = () => {
 };
 
 export default RightSideButton;
+
 
