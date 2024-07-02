@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import axios from 'axios';
-import Sidebar from './Sidebar'; 
 import { BarChart } from '@mui/x-charts/BarChart';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
