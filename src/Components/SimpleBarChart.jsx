@@ -60,23 +60,24 @@ const SimpleBarChart = () => {
   const minCostPatient = Math.min(...tableData.map(calculateTotalCostPerPatient));
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" mt={2}>
+    <Box display="flex" flexDirection="column" alignItems="center" mt={1}>
       {/* Display "i-Open" text centered above the Bar Chart */}
       <Typography variant="h3" align="center" gutterBottom sx={{ fontSize: '2.5rem', mb: 1 }}>
         i-Open
       </Typography>
 
       {/* Bar Chart */}
-      <Box width={600} height={350} display="flex" justifyContent="center" alignItems="center">
+      <Box width={1000} height={250} display="flex" justifyContent="center" alignItems="center">
         <BarChart
-          width={550} // Increased width for better visibility
-          height={300} // Increased height for better range visibility
+          width={1000} // Increased width for better visibility
+          height={280} // Increased height for better range visibility
           series={[
-            { data: responseData.bar_gragh_data[0].data, color: '#151B54', barThickness: 20 }, // Adjusted bar thickness
-            { data: responseData.bar_gragh_data[1].data, color: '#0041C2', barThickness: 20 },
-            { data: responseData.bar_gragh_data[2].data, color: '#1E90FF', barThickness: 20 },
-            { data: responseData.bar_gragh_data[3].data, color: '#4863A0', barThickness: 20 },
-            { data: responseData.bar_gragh_data[4].data, color: '#79BAEC', barThickness: 20 },
+            { data: responseData.bar_gragh_data[0].data.map(item => Math.round( item / 1000)), color: '#151B54', barThickness: 20 }, // Adjusted bar thickness
+            { data: responseData.bar_gragh_data[1].data.map(item => Math.round( item / 1000)), color: '#0041C2', barThickness: 20 },
+            { data: responseData.bar_gragh_data[2].data.map(item => Math.round( item / 1000)), color: '#1E90FF', barThickness: 20 },
+            { data: responseData.bar_gragh_data[3].data.map(item => Math.round( item / 1000)), color: '#4863A0', barThickness: 20 },
+            { data: responseData.bar_gragh_data[4].data.map(item =>  Math.round( item / 1000)), color: '#79BAEC', barThickness: 20 },
+            { data: responseData.bar_gragh_data[5].data.map(item =>  Math.round( item / 1000)), color: '#F08080', barThickness: 20 },
           ]}
           xAxis={[{ data: xLabels, scaleType: 'band' }]}
           options={{ legend: { display: false }, scales: { x: { beginAtZero: true }}}} // Ensure x-axis starts at zero
@@ -95,6 +96,8 @@ const SimpleBarChart = () => {
         <Box mr={2}>Travel and Food Costs</Box>
         <Box mr={2} bgcolor="#79BAEC" width={20} height={20}></Box>
         <Box>Total Opportunity Cost</Box>
+        <Box mr={2} bgcolor="#F08080" width={20} height={20}></Box>
+        <Box>Total Cost/Patient</Box>
       </Box>
 
       {/* Data Table */}
@@ -144,7 +147,7 @@ const SimpleBarChart = () => {
           textAlign: 'center',
           marginTop: '30px',
           borderRadius: '7px',
-          fontSize: '20px',
+          fontSize: '18px',
           maxWidth: '1900px', // Adjust width as needed
         }}
       >
