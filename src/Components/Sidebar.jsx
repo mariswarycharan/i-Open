@@ -136,15 +136,7 @@ const Sidebar = () => {
                 </select>
             </div>
 
-            <div>
-                <h2>Patient Support</h2>
-                <select id="PatientSupportSelect" value={formData.patient_support || ''} onChange={e => handleChange('patient_support', e.target.value)}>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                    <option value="None">None</option>
-                </select>
-            </div>
-
+           
             <div>
                 <h2>Naive/Switch:</h2>
                 <select id="naiveSwitchSelect" value={formData.naive_switch || ''} onChange={e => handleChange('naive_switch', e.target.value)}>
