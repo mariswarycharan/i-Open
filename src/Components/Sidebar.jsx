@@ -101,7 +101,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             <div>
-            <img src={logoImage} alt="Logo" style={{ maxWidth: '30%', height: '60px' }} />
+            <img src={logoImage} alt="Logo" style={{ maxWidth: '30%', height: '50px', position: 'relative', top: '-10px'}} />
 
             </div>
 
