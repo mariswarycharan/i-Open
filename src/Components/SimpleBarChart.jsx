@@ -60,17 +60,17 @@ const SimpleBarChart = () => {
   const minCostPatient = Math.min(...tableData.map(calculateTotalCostPerPatient));
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" mt={2}>
+    <Box display="flex" flexDirection="column" alignItems="center" mt={1}>
       {/* Display "i-Open" text centered above the Bar Chart */}
       <Typography variant="h3" align="center" gutterBottom sx={{ fontSize: '2.5rem', mb: 1 }}>
         i-Open
       </Typography>
 
       {/* Bar Chart */}
-      <Box width={600} height={350} display="flex" justifyContent="center" alignItems="center">
+      <Box width={1000} height={250} display="flex" justifyContent="center" alignItems="center">
         <BarChart
           width={1000} // Increased width for better visibility
-          height={450} // Increased height for better range visibility
+          height={280} // Increased height for better range visibility
           series={[
             { data: responseData.bar_gragh_data[0].data.map(item => Math.round( item / 1000)), color: '#151B54', barThickness: 20 }, // Adjusted bar thickness
             { data: responseData.bar_gragh_data[1].data.map(item => Math.round( item / 1000)), color: '#0041C2', barThickness: 20 },
@@ -147,7 +147,7 @@ const SimpleBarChart = () => {
           textAlign: 'center',
           marginTop: '30px',
           borderRadius: '7px',
-          fontSize: '20px',
+          fontSize: '18px',
           maxWidth: '1900px', // Adjust width as needed
         }}
       >
