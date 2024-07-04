@@ -24,10 +24,12 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     color: theme.palette.common.white,
     fontSize: '0.75rem', // Smaller font size for the header
     padding: '2px 4px', // Reduced padding
+    fontcolor: 'black',
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: '0.75rem', // Smaller font size for the body cells
     padding: '6px 10px', // Reduced padding
+    fontcolor: 'black',
   },
 }));
 
@@ -77,7 +79,7 @@ const DataTableContainer = styled('div')({
 });
 
 // Bar chart colors
-const chartColors = ['#151B54', '#0041C2', '#1E90FF'];
+const chartColors = ['#8932FA', '#FFA500', '#808080'];
 
 export default function StackedBarChartsWithTables() {
   const [selectedDrug, setSelectedDrug] = React.useState('Drug 2'); // Initial selection for drug 2

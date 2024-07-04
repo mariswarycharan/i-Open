@@ -12,11 +12,12 @@ import { PieChart as MuiPieChart } from '@mui/x-charts/PieChart';
 import AppContext from './AppContext';
 import { useContext, useEffect, useState } from 'react';
 
+
 // Define colors
 const colors = {
-    packageCost: '#151B54', // Dark blue
-    directCost: '#0041C2', // Main blue
-    indirectCosts: '#1E90FF', // Light blue
+    packageCost: '#AFABAB', // Dark blue
+    directCost: '#1E90FF', // Main blue
+    indirectCosts: '#E7D6FE', // Light blue
 };
 
 // Define a custom theme
@@ -50,7 +51,7 @@ const theme = createTheme({
                 borderBottom: 'none', // Remove default table cell bottom border
             },
             head: {
-                backgroundColor: 'white', // Header background color
+                backgroundColor: 'black', // Header background color
                 color: '#000', // Header text color
                 fontSize: '1.5rem', // Apply h6 font size
             },
@@ -188,13 +189,13 @@ export default function PieChartWithDataTable() {
                 </TableContainer>
                 <Box
                     sx={{
-                        backgroundColor: theme.palette.blueShades.main,
+                        backgroundColor: '#1E90FF',
                         color: 'white',
                         padding: '10px',
                         textAlign: 'center',
                         marginTop: '30px',
                         borderRadius: '7px',
-                        fontSize: '20px'
+                        fontSize: '15px'
                     }}
                 >
                     With VABYSMO<sup>®</sup>, Do More of what you love with a chance for up to 4 months between treatments.

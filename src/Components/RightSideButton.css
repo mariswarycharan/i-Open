@@ -17,14 +17,14 @@
     color: white;                 /* Button text color */
     border: none;                 /* No border */
     padding: 12px 30px;           /* Increased padding for larger buttons */
-    font-size: 18px;              /* Increased font size for visibility */
+    font-size: 15px;              /* Increased font size for visibility */
     cursor: pointer;              /* Pointer cursor on hover */
     transition: background-color 0.3s; /* Smooth transition on hover */
 }
 
 /* Specific rounded button styling */
 .rounded-button {
-    border-radius: 30px;          /* Rounded corners */
+    border-radius: 10px;          /* Rounded corners */
 }
 
 .rounded-button:hover {
@@ -34,7 +34,7 @@
 /* Styling for the "i-Open" text */
 .i-open-text {
     font-weight: bold;
-    font-size: 50px;
+    font-size: 30px;
     margin-right: 0px;           /* Adjusted margin to separate from buttons */
     margin-bottom: 20px;         /* Margin below the text */
 }

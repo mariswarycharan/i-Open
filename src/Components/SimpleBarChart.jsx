@@ -72,12 +72,12 @@ const SimpleBarChart = () => {
           width={1000} // Increased width for better visibility
           height={280} // Increased height for better range visibility
           series={[
-            { data: responseData.bar_gragh_data[0].data.map(item => Math.round( item / 1000)), color: '#151B54', barThickness: 20 }, // Adjusted bar thickness
-            { data: responseData.bar_gragh_data[1].data.map(item => Math.round( item / 1000)), color: '#0041C2', barThickness: 20 },
-            { data: responseData.bar_gragh_data[2].data.map(item => Math.round( item / 1000)), color: '#1E90FF', barThickness: 20 },
-            { data: responseData.bar_gragh_data[3].data.map(item => Math.round( item / 1000)), color: '#4863A0', barThickness: 20 },
-            { data: responseData.bar_gragh_data[4].data.map(item =>  Math.round( item / 1000)), color: '#79BAEC', barThickness: 20 },
-            { data: responseData.bar_gragh_data[5].data.map(item =>  Math.round( item / 1000)), color: '#F08080', barThickness: 20 },
+            { data: responseData.bar_gragh_data[0].data.map(item => Math.round( item / 1000)), color: '#8932FA', barThickness: 20 }, // Adjusted bar thickness
+            { data: responseData.bar_gragh_data[1].data.map(item => Math.round( item / 1000)), color: '#FFA500', barThickness: 20 },
+            { data: responseData.bar_gragh_data[2].data.map(item => Math.round( item / 1000)), color: '#808080', barThickness: 20 },
+            { data: responseData.bar_gragh_data[3].data.map(item => Math.round( item / 1000)), color: '#FFD700', barThickness: 20 },
+            { data: responseData.bar_gragh_data[4].data.map(item =>  Math.round( item / 1000)), color: '#49759C', barThickness: 20 },
+            { data: responseData.bar_gragh_data[5].data.map(item =>  Math.round( item / 1000)), color: '#290086', barThickness: 20 },
           ]}
           xAxis={[{ data: xLabels, scaleType: 'band' }]}
           options={{ legend: { display: false }, scales: { x: { beginAtZero: true }}}} // Ensure x-axis starts at zero
@@ -86,34 +86,34 @@ const SimpleBarChart = () => {
 
       {/* Legend Box */}
       <Box display="flex" justifyContent="center" alignItems="center" mt={1}>
-        <Box mr={2} bgcolor="#151B54" width={20} height={20}></Box>
+        <Box mr={2} bgcolor="#8932FA" width={20} height={20}></Box>
         <Box mr={2}>Total Package Cost</Box>
-        <Box mr={2} bgcolor="#0041C2" width={20} height={20}></Box>
+        <Box mr={2} bgcolor="#FFA500" width={20} height={20}></Box>
         <Box mr={2}>Consulting Cost</Box>
-        <Box mr={2} bgcolor="#1E90FF" width={20} height={20}></Box>
+        <Box mr={2} bgcolor="#808080" width={20} height={20}></Box>
         <Box mr={2}>OCT Charges</Box>
-        <Box mr={2} bgcolor="#4863A0" width={20} height={20}></Box>
+        <Box mr={2} bgcolor="#FFD700" width={20} height={20}></Box>
         <Box mr={2}>Travel and Food Costs</Box>
-        <Box mr={2} bgcolor="#79BAEC" width={20} height={20}></Box>
+        <Box mr={2} bgcolor="#49759C" width={20} height={20}></Box>
         <Box>Total Opportunity Cost</Box>
-        <Box mr={2} bgcolor="#F08080" width={20} height={20}></Box>
+        <Box mr={2} bgcolor="#290086" width={20} height={20}></Box>
         <Box>Total Cost/Patient</Box>
       </Box>
 
       {/* Data Table */}
       <TableContainer component={Paper} style={{ marginTop: '10px', width: '100%', maxWidth: '1200px', border: '1px solid black' }}>
-        <Table sx={{ minWidth: 650 }} size="small" aria-label="sample dense table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Drug</TableCell>
-              <TableCell align="right">Total Package Cost</TableCell>
-              <TableCell align="right">Consulting Cost</TableCell>
-              <TableCell align="right">OCT Charges</TableCell>
-              <TableCell align="right">Travel and Food Cost</TableCell>
-              <TableCell align="right">Total Opportunity Cost Lost</TableCell>
-              <TableCell align="right">Total Cost/Patient</TableCell>
-            </TableRow>
-          </TableHead>
+  <Table sx={{ minWidth: 650 }} size="small" aria-label="sample dense table">
+    <TableHead>
+      <TableRow>
+        <TableCell sx={{ fontWeight: 'bold' }}>Drug</TableCell>
+        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Total Package Cost</TableCell>
+        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Consulting Cost</TableCell>
+        <TableCell align="right" sx={{ fontWeight: 'bold' }}>OCT Charges</TableCell>
+        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Travel and Food Cost</TableCell>
+        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Total Opportunity Cost Lost</TableCell>
+        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Total Cost/Patient</TableCell>
+      </TableRow>
+    </TableHead>
          
           <TableBody>
             {tableData.map((row) => {
@@ -147,7 +147,7 @@ const SimpleBarChart = () => {
           textAlign: 'center',
           marginTop: '30px',
           borderRadius: '7px',
-          fontSize: '18px',
+          fontSize: '15px',
           maxWidth: '1900px', // Adjust width as needed
         }}
       >
