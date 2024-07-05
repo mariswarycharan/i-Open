@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import BasicPie from './PieChart';
 import './TotalPackageCostPage.css'; 
-import homeIcon from './home.png';
+import homeIcon from './back.jpg';
 import { useNavigate } from 'react-router-dom';
 import AppContext from './AppContext';
 

@@ -20,7 +20,7 @@
 .home-icon-container {
     position: absolute;
     top: 0px; /* Adjust top position as needed */
-    right: 20px; /* Adjust right position as needed */
+    left: 20px; /* Adjust right position as needed */
     cursor: pointer;
 }
 

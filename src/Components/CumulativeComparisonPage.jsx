@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import SimpleBarChart from './BarChart';
-import homeIcon from './home.png';
+import homeIcon from './back.jpg';
 import AppContext from './AppContext';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
