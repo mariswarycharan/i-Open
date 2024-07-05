@@ -86,17 +86,17 @@ const SimpleBarChart = () => {
 
       {/* Legend Box */}
       <Box display="flex" justifyContent="center" alignItems="center" mt={1}>
-        <Box mr={2} bgcolor="#8932FA" width={20} height={20}></Box>
-        <Box mr={2}>Total Package Cost</Box>
-        <Box mr={2} bgcolor="#FFA500" width={20} height={20}></Box>
-        <Box mr={2}>Consulting Cost</Box>
-        <Box mr={2} bgcolor="#808080" width={20} height={20}></Box>
-        <Box mr={2}>OCT Charges</Box>
-        <Box mr={2} bgcolor="#FFD700" width={20} height={20}></Box>
-        <Box mr={2}>Travel and Food Costs</Box>
-        <Box mr={2} bgcolor="#49759C" width={20} height={20}></Box>
+        <Box mr={3} bgcolor="#8932FA" width={20} height={20}></Box>
+        <Box mr={3}>Total Package Cost</Box>
+        <Box mr={3} bgcolor="#FFA500" width={20} height={20}></Box>
+        <Box mr={3}>Consulting Cost</Box>
+        <Box mr={3} bgcolor="#808080" width={20} height={20}></Box>
+        <Box mr={3}>OCT Charges</Box>
+        <Box mr={3} bgcolor="#FFD700" width={20} height={20}></Box>
+        <Box mr={3}>Travel and Food Costs</Box>
+        <Box mr={3} bgcolor="#49759C" width={20} height={20}></Box>
         <Box>Total Opportunity Cost</Box>
-        <Box mr={2} bgcolor="#290086" width={20} height={20}></Box>
+        <Box mr={3} bgcolor="#290086" width={20} height={20}></Box>
         <Box>Total Cost/Patient</Box>
       </Box>
 
