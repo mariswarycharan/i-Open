@@ -127,6 +127,20 @@ export default function PieChartWithDataTable() {
         { label: 'Indirect Cost', color: colors.indirectCosts },
     ];
 
+    const wesToIndianConversion = (n) => {
+        n = n.toString();
+        let last3 = n.substring(n.length - 3);
+        let otherNumbers = n.substring(0, n.length - 3);
+        if (otherNumbers !== '') {
+            last3 = ',' + last3;
+        }
+        const regex = /(\d+)(\d{2})/;
+        while (regex.test(otherNumbers)) {
+            otherNumbers = otherNumbers.replace(regex, '$1,$2');
+        }
+        return '₹' + otherNumbers + last3;
+    };
+    
     return (
         <ThemeProvider theme={theme}>
             <div>
@@ -178,10 +192,10 @@ export default function PieChartWithDataTable() {
                                     <StyledTableCell component="th" scope="row">
                                         {row.name}
                                     </StyledTableCell>
-                                    <StyledTableCell align="right">₹{row.packageCost}</StyledTableCell>
-                                    <StyledTableCell align="right">₹{row.directCost}</StyledTableCell>
-                                    <StyledTableCell align="right">₹{row.indirectCosts}</StyledTableCell>
-                                    <StyledTableCell align="right">₹{row.totalCosts}</StyledTableCell>
+                                    <StyledTableCell align="right">{wesToIndianConversion(row.packageCost)}</StyledTableCell>
+                                    <StyledTableCell align="right">{wesToIndianConversion(row.directCost)}</StyledTableCell>
+                                    <StyledTableCell align="right">{wesToIndianConversion(row.indirectCosts)}</StyledTableCell>
+                                    <StyledTableCell align="right">{wesToIndianConversion(row.totalCosts)}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

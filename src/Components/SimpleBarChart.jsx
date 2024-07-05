@@ -59,6 +59,21 @@ const SimpleBarChart = () => {
   // Find the row with the minimum Total Cost/Patient
   const minCostPatient = Math.min(...tableData.map(calculateTotalCostPerPatient));
 
+  const wesToIndianConversion = (n) => {
+    n = n.toString();
+    let last3 = n.substring(n.length - 3);
+    let otherNumbers = n.substring(0, n.length - 3);
+    if (otherNumbers !== '') {
+        last3 = ',' + last3;
+    }
+    const regex = /(\d+)(\d{2})/;
+    while (regex.test(otherNumbers)) {
+        otherNumbers = otherNumbers.replace(regex, '$1,$2');
+    }
+    return '₹' + otherNumbers + last3;
+};
+
+
   return (
     <Box display="flex" flexDirection="column" alignItems="center" mt={1}>
       {/* Display "i-Open" text centered above the Bar Chart */}
@@ -123,13 +138,14 @@ const SimpleBarChart = () => {
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{row.totalPackageCost}</TableCell>
-                  <TableCell align="right">{row.consultingCost}</TableCell>
-                  <TableCell align="right">{row.octCharges}</TableCell>
-                  <TableCell align="right">{row.travelFoodCost}</TableCell>
-                  <TableCell align="right">{row.opportunityCost}</TableCell>
+                  <TableCell align="right">{wesToIndianConversion(row.totalPackageCost)}</TableCell>
+                  <TableCell align="right">{wesToIndianConversion(row.consultingCost)}</TableCell>
+                  <TableCell align="right">{wesToIndianConversion(row.octCharges)}</TableCell>
+                  <TableCell align="right">{wesToIndianConversion(row.travelFoodCost)}</TableCell>
+                  <TableCell align="right">{wesToIndianConversion(row.opportunityCost)}</TableCell>
+                  
                   <TableCell align="right" style={{ backgroundColor: totalCost === minCostPatient ? '#F08080' : 'inherit' }}>
-                    {totalCost}
+                    {wesToIndianConversion(totalCost)}
                   </TableCell>
                 </TableRow>
               );

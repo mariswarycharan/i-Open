@@ -99,9 +99,9 @@ const Sidebar = () => {
     
 
     return (
-        <div className="sidebar">
+        <div className="sidebar" style={{ marginTop: '-20px' }}>
             <div>
-            <img src={logoImage} alt="Logo" style={{ maxWidth: '30%', height: '60px', position: 'relative', top: '-10px'}} />
+            <img src={logoImage} alt="Logo" style={{ maxWidth: '30%', height: '50px' }} />
 
             </div>
 
@@ -127,7 +127,14 @@ const Sidebar = () => {
                 </select>
         </div>
 
-            
+            <div>
+                <h2>Government A/C:</h2>
+                <select id="governmentACSelect" value={formData.government_ac || ''} onChange={e => handleChange('government_ac', e.target.value)}>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                    <option value="None">None</option>
+                </select>
+            </div>
 
             <div>
                 <h2>Patient Support</h2>

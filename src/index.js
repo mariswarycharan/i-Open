@@ -21,11 +21,11 @@ function AppRouter() {
     patient_support: "Yes",
     naive_switch: "Naive",
     clinical_status: "Per Label",
-    drug1_dosage: 3,
-    drug2_dosage: 3,
-    drug3_dosage: 5,
-    drug4_dosage: 8,
-    drug5_dosage: 8,
+    drug1_dosage: 6,
+    drug2_dosage: 8,
+    drug3_dosage: 8,
+    drug4_dosage: 12,
+    drug5_dosage: 12,
     procedure_cost: 1000,
     oct_cost: 200,
     consulting_charges: 200,
@@ -41,9 +41,8 @@ function AppRouter() {
   const [responseData, setResponseData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      console.table("INPUT DATA", formData);
       try {
-        const response = await axios.post('https://i-open-backend.vercel.app/submit', formData);
+        const response = await axios.post('http://127.0.0.1:8000/submit', formData);
         setResponseData(response.data);
 
         console.log(response.data);

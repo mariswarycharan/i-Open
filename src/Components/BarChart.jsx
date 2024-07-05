@@ -135,7 +135,6 @@ export default function StackedBarChartsWithTables() {
     }
   })
 
-  console.log(responseData);
 
   useEffect(() => {
     if(!responseData) return;
@@ -154,6 +153,21 @@ export default function StackedBarChartsWithTables() {
       Second_Drug: event.target.value
     }))
   };
+
+  const wesToIndianConversion = (n) => {
+    n = n.toString();
+    let last3 = n.substring(n.length - 3);
+    let otherNumbers = n.substring(0, n.length - 3);
+    if (otherNumbers !== '') {
+        last3 = ',' + last3;
+    }
+    const regex = /(\d+)(\d{2})/;
+    while (regex.test(otherNumbers)) {
+        otherNumbers = otherNumbers.replace(regex, '$1,$2');
+    }
+    return '₹' + otherNumbers + last3;
+};
+
 
   const renderDataTable1 = () => (
     <DataTableContainer>
@@ -176,7 +190,7 @@ export default function StackedBarChartsWithTables() {
               <StyledTableRow key={row.label}>
                 <StyledTableCell component="th" scope="row">{row.label}</StyledTableCell>
                 {row.values.map((value, idx) => (
-                  <TableCell key={idx} align="center">₹ {value}</TableCell>
+                  <TableCell key={idx} align="center">{wesToIndianConversion(value)}</TableCell>
                 ))}
               </StyledTableRow>
             ))}
@@ -207,7 +221,7 @@ export default function StackedBarChartsWithTables() {
               <StyledTableRow key={row.label}>
                 <StyledTableCell component="th" scope="row">{row.label}</StyledTableCell>
                 {row.values.map((value, idx) => (
-                  <TableCell key={idx} align="center">₹ {value}</TableCell>
+                  <TableCell key={idx} align="center">{wesToIndianConversion(value)}</TableCell>
                 ))}
               </StyledTableRow>
             ))}
@@ -216,6 +230,8 @@ export default function StackedBarChartsWithTables() {
       </TableContainer>
     </DataTableContainer>
   );
+
+
 
   return (
     <Container>
