@@ -41,7 +41,6 @@ function AppRouter() {
   const [responseData, setResponseData] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
-      console.table("INPUT DATA", formData);
       try {
         const response = await axios.post('http://127.0.0.1:8000/submit', formData);
         setResponseData(response.data);
