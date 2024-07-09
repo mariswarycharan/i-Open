@@ -11,13 +11,36 @@
 }
 
 .sidebar {
-  box-shadow: none; /* Remove box shadow */
+  box-shadow: none;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.input-container {
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.input-container select {
+  width: 80%;
+  padding: 5px;
+  font-size: 14px;
+  text-align: center;
+  display: block;
+  margin: 0 auto; /* Center the dropdown */
 }
 
 
-
 .drug-table {
-  width: 2000px; /* Table takes full width of the content area */
+  width: 2000px;
+  align-items: center
 }
 
 .drug-table th,

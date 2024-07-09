@@ -127,14 +127,7 @@ const Sidebar = () => {
                 </select>
         </div>
 
-            <div>
-                <h2>Government A/C:</h2>
-                <select id="governmentACSelect" value={formData.government_ac || ''} onChange={e => handleChange('government_ac', e.target.value)}>
-                    <option value="Yes">Yes</option>
-                    <option value="No">No</option>
-                    <option value="None">None</option>
-                </select>
-            </div>
+         
 
             <div>
                 <h2>Patient Support</h2>

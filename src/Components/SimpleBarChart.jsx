@@ -84,6 +84,8 @@ const SimpleBarChart = () => {
       {/* Bar Chart */}
       <Box width={1000} height={250} display="flex" justifyContent="center" alignItems="center">
         <BarChart
+
+        
           width={1000} // Increased width for better visibility
           height={280} // Increased height for better range visibility
           series={[
@@ -121,12 +123,12 @@ const SimpleBarChart = () => {
     <TableHead>
       <TableRow>
         <TableCell sx={{ fontWeight: 'bold' }}>Drug</TableCell>
-        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Total Package Cost</TableCell>
-        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Consulting Cost</TableCell>
-        <TableCell align="right" sx={{ fontWeight: 'bold' }}>OCT Charges</TableCell>
-        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Travel and Food Cost</TableCell>
-        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Total Opportunity Cost Lost</TableCell>
-        <TableCell align="right" sx={{ fontWeight: 'bold' }}>Total Cost/Patient</TableCell>
+        <TableCell align="center" sx={{ fontWeight: 'bold' }}>Total Package Cost</TableCell>
+        <TableCell align="center" sx={{ fontWeight: 'bold' }}>Consulting Cost</TableCell>
+        <TableCell align="center" sx={{ fontWeight: 'bold' }}>OCT Charges</TableCell>
+        <TableCell align="center" sx={{ fontWeight: 'bold' }}>Travel and Food Cost</TableCell>
+        <TableCell align="center" sx={{ fontWeight: 'bold' }}>Total Opportunity Cost Lost</TableCell>
+        <TableCell align="center" sx={{ fontWeight: 'bold' }}>Total Cost/Patient</TableCell>
       </TableRow>
     </TableHead>
          
@@ -138,13 +140,13 @@ const SimpleBarChart = () => {
                   <TableCell component="th" scope="row">
                     {row.name}
                   </TableCell>
-                  <TableCell align="right">{wesToIndianConversion(row.totalPackageCost)}</TableCell>
-                  <TableCell align="right">{wesToIndianConversion(row.consultingCost)}</TableCell>
-                  <TableCell align="right">{wesToIndianConversion(row.octCharges)}</TableCell>
-                  <TableCell align="right">{wesToIndianConversion(row.travelFoodCost)}</TableCell>
-                  <TableCell align="right">{wesToIndianConversion(row.opportunityCost)}</TableCell>
+                  <TableCell align="center">{wesToIndianConversion(row.totalPackageCost)}</TableCell>
+                  <TableCell align="center">{wesToIndianConversion(row.consultingCost)}</TableCell>
+                  <TableCell align="center">{wesToIndianConversion(row.octCharges)}</TableCell>
+                  <TableCell align="center">{wesToIndianConversion(row.travelFoodCost)}</TableCell>
+                  <TableCell align="center">{wesToIndianConversion(row.opportunityCost)}</TableCell>
                   
-                  <TableCell align="right" style={{ backgroundColor: totalCost === minCostPatient ? '#F08080' : 'inherit' }}>
+                  <TableCell align="center" style={{ backgroundColor: totalCost === minCostPatient ? '#F08080' : 'inherit' }}>
                     {wesToIndianConversion(totalCost)}
                   </TableCell>
                 </TableRow>

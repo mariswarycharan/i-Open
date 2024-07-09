@@ -15,9 +15,9 @@ import { useContext, useEffect, useState } from 'react';
 
 // Define colors
 const colors = {
-    packageCost: '#AFABAB', // Dark blue
-    directCost: '#1E90FF', // Main blue
-    indirectCosts: '#E7D6FE', // Light blue
+    packageCost: '#E7D6FE',
+    directCost: '#1E90FF', 
+    indirectCosts: '#AFABAB', 
 };
 
 // Define a custom theme
@@ -36,10 +36,10 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontSize: 14,
+        fontSize: 12,
         fontFamily: ['Arial', 'Helvetica', 'sans-serif'].join(','),
         h6: {
-            fontSize: '1.5rem', // Font size for header cells
+            fontSize: '1rem', // Font size for header cells
         },
         subtitle1: {
             fontSize: '1rem', // Font size for body cells
@@ -52,7 +52,7 @@ const theme = createTheme({
             },
             head: {
                 backgroundColor: 'black', // Header background color
-                color: '#000', // Header text color
+                color: 'black', // Header text color
                 fontSize: '1.5rem', // Apply h6 font size
             },
             body: {
@@ -76,7 +76,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
         backgroundColor: theme.palette.blueShades.main,
         color: theme.palette.common.white,
-        fontSize: theme.typography.h6.fontSize, // Use h6 font size
+        fontSize: theme.typography.h5.fontSize, // Use h6 font size
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: theme.typography.subtitle1.fontSize, // Use subtitle1 font size
@@ -170,7 +170,7 @@ export default function PieChartWithDataTable() {
                 >
                     {legendItems.map((item, index) => (
                         <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
-                            <div style={{ width: '12px', height: '12px', backgroundColor: item.color, marginRight: '5px' }}></div>
+                            <div style={{ width: '10px', height: '10px', backgroundColor: item.color, marginRight: '5px' }}></div>
                             {item.label}
                         </div>
                     ))}
@@ -179,11 +179,11 @@ export default function PieChartWithDataTable() {
                     <Table sx={{ minWidth: 200 }} aria-label="customized table">
                         <TableHead>
                             <TableRow>
-                                <StyledTableCell>Total Package Costs @ Year 1</StyledTableCell>
-                                <StyledTableCell align="right">Package Cost</StyledTableCell>
-                                <StyledTableCell align="right">Direct Costs</StyledTableCell>
-                                <StyledTableCell align="right">Indirect Costs</StyledTableCell>
-                                <StyledTableCell align="right">Total Costs</StyledTableCell>
+                                <StyledTableCell>Total Package Costs</StyledTableCell>
+                                <StyledTableCell align="center">Package Cost</StyledTableCell>
+                                <StyledTableCell align="center">Direct Costs</StyledTableCell>
+                                <StyledTableCell align="center">Indirect Costs</StyledTableCell>
+                                <StyledTableCell align="center">Total Costs</StyledTableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -192,10 +192,10 @@ export default function PieChartWithDataTable() {
                                     <StyledTableCell component="th" scope="row">
                                         {row.name}
                                     </StyledTableCell>
-                                    <StyledTableCell align="right">{wesToIndianConversion(row.packageCost)}</StyledTableCell>
-                                    <StyledTableCell align="right">{wesToIndianConversion(row.directCost)}</StyledTableCell>
-                                    <StyledTableCell align="right">{wesToIndianConversion(row.indirectCosts)}</StyledTableCell>
-                                    <StyledTableCell align="right">{wesToIndianConversion(row.totalCosts)}</StyledTableCell>
+                                    <StyledTableCell align="center">{wesToIndianConversion(row.packageCost)}</StyledTableCell>
+                                    <StyledTableCell align="center">{wesToIndianConversion(row.directCost)}</StyledTableCell>
+                                    <StyledTableCell align="center">{wesToIndianConversion(row.indirectCosts)}</StyledTableCell>
+                                    <StyledTableCell align="center">{wesToIndianConversion(row.totalCosts)}</StyledTableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

@@ -1,33 +1,28 @@
+.pie-chart {
+  width: 250px;
+  height: 150px;
+}
+
+.pie-arc-label {
+  fill: white;
+  font-weight: bold;
+}
+
+.pie-arc-label-text {
+  fill: black;
+}
+
 .pie-chart-container {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-  }
-  
-  .pie-chart {
-    width: 250px;
-    height: 150px;
-  }
-  
-  
-  .pie-slice-1 {
-    fill:#151B54; 
-  }
-  
-  .pie-slice-2 {
-    fill: #1b140e39; 
-  }
-  
-  .pie-slice-3 {
-    fill: #71789a; 
-  }
-  
-  .pie-arc-label {
-    fill: white;
-    font-weight: bold;
-  }
-  
-  .pie-arc-label-text {
-    fill: black; 
-  }
-  
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.data-table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  max-height: 200px; /* Adjust the height as needed */
+  overflow-y: auto; /* Adds a scrollbar if the content overflows */
+}
