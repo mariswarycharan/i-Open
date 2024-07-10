@@ -281,6 +281,7 @@ export default function StackedBarChartsWithTables() {
           <BarChart
             width={500}
             height={300}
+            margin={{ left: 100 }}
             series={[
               { data: barChartData.First_Drug_data.Indirect_Costs, label: 'Indirect Cost', id: 'indirect1', stack: 'total', color: chartColors[0] },
               { data: barChartData.First_Drug_data.Direct_Costs, label: 'Direct Cost', id: 'direct1', stack: 'total', color: chartColors[1] },
@@ -297,6 +298,7 @@ export default function StackedBarChartsWithTables() {
           <BarChart
             width={500}
             height={300}
+            margin={{ left: 100 }}
             series={[
               { data: barChartData.Second_Drug_data.Indirect_Costs, label: 'Indirect Cost', id: 'indirect2', stack: 'total', color: chartColors[0] },
               { data: barChartData.Second_Drug_data.Direct_Costs, label: 'Direct Cost', id: 'direct2', stack: 'total', color: chartColors[1] },

@@ -107,7 +107,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Disease Indication:</h2>
-                <select id="diseaseSelect" value={formData.disease_indication || ''} onChange={e => handleChange('disease_indication', e.target.value)}>
+                <select id="diseaseSelect" value={formData.disease_indication || ''} onChange={e => handleChange('disease_indication', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     <option value="WET AMD">WET AMD</option>
                     <option value="DME">DME</option>
                     <option value="None">None</option>
@@ -120,6 +121,7 @@ const Sidebar = () => {
                     id="timeHorizonSelect"
                     value={formData.time_horizon || ''}
                     onChange={handleTimeHorizonChange}
+                    style={{ fontSize: '14px' }}
                 >
                     {[1, 2, 3, 4, 5].map(value => (
                         <option key={value} value={value}>{value}</option>
@@ -131,7 +133,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Patient Support</h2>
-                <select id="PatientSupportSelect" value={formData.patient_support || ''} onChange={e => handleChange('patient_support', e.target.value)}>
+                <select id="PatientSupportSelect" value={formData.patient_support || ''} onChange={e => handleChange('patient_support', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
                     <option value="None">None</option>
@@ -140,7 +143,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Naive/Switch:</h2>
-                <select id="naiveSwitchSelect" value={formData.naive_switch || ''} onChange={e => handleChange('naive_switch', e.target.value)}>
+                <select id="naiveSwitchSelect" value={formData.naive_switch || ''} onChange={e => handleChange('naive_switch', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     <option value="Naive">Naive</option>
                     <option value="Switch">Switch</option>
                 </select>
@@ -148,17 +152,18 @@ const Sidebar = () => {
 
             <div>
                 <h2>Clinical Status:</h2>
-                <select id="clinicalStatusSelect" value={formData.clinical_status || ''} onChange={e => handleChange('clinical_status', e.target.value)}>
+                <select id="clinicalStatusSelect" value={formData.clinical_status || ''} onChange={e => handleChange('clinical_status', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     <option value="Per Label">Per Label</option>
                     <option value="RWE">RWE</option>
                 </select>
             </div>
 
             <div className="table-container">
-  <table className="drug-table">
+  <table className="drug-table" style={{ width: '100%' }}>
     <thead>
       <tr>
-        <th>Drug</th>
+        <th style={{ width: '50000px' }}>Drug</th>
         <th>Yes/No</th>
         <th>Dosage</th>
       </tr>
@@ -166,11 +171,12 @@ const Sidebar = () => {
     <tbody>
       {tableData.map((item, index) => (
         <tr key={index}>
-          <td>{item.drug}</td>
+          <td style={{ width: '50000px', textAlign: 'center', direction: 'rtl' }}>{item.drug}</td>
           <td>
             <select
               value={item.option}
               onChange={(e) => handleOptionChange(index, e.target.value)}
+              style={{ fontSize: '14px' }}
             >
               <option value="Yes">Yes</option>
               <option value="No">No</option>
@@ -182,6 +188,8 @@ const Sidebar = () => {
               <select
                 value={item.value}
                 onChange={(e) => handleDosageChange(index, e.target.value)}
+                style={{ fontSize: '14px' }}
+                textAlign='center'
               >
                 {[...Array(15).keys()].map(n => (
                   <option key={n + 1} value={n + 1}>{n + 1}</option>
@@ -197,9 +205,11 @@ const Sidebar = () => {
   </table>
 </div>
 
+
             <div>
                 <h2>Procedure Cost:</h2>
-                <select id="ProcedureCost" value={`₹ ${formData.procedure_cost || 0}`} onChange={e => handleCurrencyChange('procedure_cost', e.target.value)}>
+                <select id="ProcedureCost" value={`₹ ${formData.procedure_cost || 0}`} onChange={e => handleCurrencyChange('procedure_cost', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
@@ -208,7 +218,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>OCT Cost:</h2>
-                <select id="OCTCostSelect" value={`₹ ${formData.oct_cost || 0}`} onChange={e => handleCurrencyChange('oct_cost', e.target.value)}>
+                <select id="OCTCostSelect" value={`₹ ${formData.oct_cost || 0}`} onChange={e => handleCurrencyChange('oct_cost', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 200, 300, 500, 700, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
@@ -217,7 +228,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Consulting Charges:</h2>
-                <select id="ConsultingChargesSelect" value={`₹ ${formData.consulting_charges || 0}`} onChange={e => handleCurrencyChange('consulting_charges', e.target.value)}>
+                <select id="ConsultingChargesSelect" value={`₹ ${formData.consulting_charges || 0}`} onChange={e => handleCurrencyChange('consulting_charges', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 200, 300, 500, 700, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
@@ -226,7 +238,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Miscellaneous Costs:</h2>
-                <select id="MiscellaneousCostsSelect" value={`₹ ${formData.miscellaneous_cost || 0}`} onChange={e => handleCurrencyChange('miscellaneous_cost', e.target.value)}>
+                <select id="MiscellaneousCostsSelect" value={`₹ ${formData.miscellaneous_cost || 0}`} onChange={e => handleCurrencyChange('miscellaneous_cost', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
@@ -235,7 +248,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Travel Cost:</h2>
-                <select id="TravelCostSelect" value={`₹ ${formData.travel_cost || 0}`} onChange={e => handleCurrencyChange('travel_cost', e.target.value)}>
+                <select id="TravelCostSelect" value={`₹ ${formData.travel_cost || 0}`} onChange={e => handleCurrencyChange('travel_cost', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
@@ -244,7 +258,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Food Cost:</h2>
-                <select id="FoodCostSelect" value={`₹ ${formData.food_cost || 0}`} onChange={e => handleCurrencyChange('food_cost', e.target.value)}>
+                <select id="FoodCostSelect" value={`₹ ${formData.food_cost || 0}`} onChange={e => handleCurrencyChange('food_cost', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
@@ -253,7 +268,8 @@ const Sidebar = () => {
 
             <div>
                 <h2>Lost Opportunity Cost/Day(Patient):</h2>
-                <select id="LostOpportunityCost" value={`₹ ${formData.patient_lost_opportunity_cost || 0}`} onChange={e => handleCurrencyChange('patient_lost_opportunity_cost', e.target.value)}>
+                <select id="LostOpportunityCost" value={`₹ ${formData.patient_lost_opportunity_cost || 0}`} onChange={e => handleCurrencyChange('patient_lost_opportunity_cost', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
@@ -261,8 +277,9 @@ const Sidebar = () => {
             </div>
 
             <div>
-                <h2>Lost Opportunity Cost/Day(Caregiver):</h2>
-                <select id="Caregiver" value={`₹ ${formData.caregiver_lost_opportunity_cost || 0}`} onChange={e => handleCurrencyChange('caregiver_lost_opportunity_cost', e.target.value)}>
+                <h2 style={{ fontSize: '15.5px' }}>Lost Opportunity Cost/Day(Caregiver):</h2>
+                <select id="Caregiver" value={`₹ ${formData.caregiver_lost_opportunity_cost || 0}`} onChange={e => handleCurrencyChange('caregiver_lost_opportunity_cost', e.target.value)}
+                    style={{ fontSize: '14px' }}>
                     {[0, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000, 17000, 18000, 19000, 20000].map(value => (
                         <option key={value} value={`₹ ${value}`}>{`₹ ${value}`}</option>
                     ))}
