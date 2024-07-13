@@ -101,7 +101,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar" style={{ marginTop: '-20px' }}>
             <div>
-            <img src={logoImage} alt="Logo" style={{ maxWidth: '30%', height: '50px' }} />
+            <img src={logoImage} alt="Logo" style={{ maxWidth: '50%', height: '90px', marginLeft: '10px'}} />
 
             </div>
 

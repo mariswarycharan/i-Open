@@ -75,19 +75,19 @@ const SimpleBarChart = () => {
 
 
   return (
-    <Box display="flex" flexDirection="column" alignItems="center" mt={1}>
+    <Box display="flex" flexDirection="column" alignItems="center" mt={2}>
       {/* Display "i-Open" text centered above the Bar Chart */}
-      <Typography variant="h3" align="center" gutterBottom sx={{ fontSize: '2.5rem', mb: 1 }}>
+      <Typography variant="h3" align="center" gutterBottom marginLeft= "200px" sx={{ fontSize: '2.5rem', mb: 2 }}>
         i-Open
       </Typography>
 
       {/* Bar Chart */}
-      <Box width={1000} height={250} display="flex" justifyContent="center" alignItems="center">
+      <Box width={1000} height={250} display="flex" justifyContent="center" alignItems="center" marginLeft = "150px">
         <BarChart
 
         
-          width={1000} // Increased width for better visibility
-          height={280} // Increased height for better range visibility
+          width={1300} // Increased width for better visibility
+          height={350} // Increased height for better range visibility
           series={[
             { data: responseData.bar_gragh_data[0].data.map(item => Math.round( item / 1000)), color: '#8932FA', barThickness: 20 }, // Adjusted bar thickness
             { data: responseData.bar_gragh_data[1].data.map(item => Math.round( item / 1000)), color: '#FFA500', barThickness: 20 },
@@ -96,13 +96,21 @@ const SimpleBarChart = () => {
             { data: responseData.bar_gragh_data[4].data.map(item =>  Math.round( item / 1000)), color: '#49759C', barThickness: 20 },
             { data: responseData.bar_gragh_data[5].data.map(item =>  Math.round( item / 1000)), color: '#290086', barThickness: 20 },
           ]}
-          xAxis={[{ data: xLabels, scaleType: 'band' }]}
+          xAxis={[{ 
+            data: xLabels, 
+            scaleType: 'band',
+            sx: {
+              '.MuiChartAxis-tickLabel': {
+                fontSize: '25px',
+              },
+            },
+          }]}
           options={{ legend: { display: false }, scales: { x: { beginAtZero: true }}}} // Ensure x-axis starts at zero
         />
       </Box>
 
       {/* Legend Box */}
-      <Box display="flex" justifyContent="center" alignItems="center" mt={1}>
+      <Box display="flex" justifyContent="center" alignItems="center" mt={2} marginLeft = "150px" fontSize={12}>
         <Box mr={3} bgcolor="#8932FA" width={20} height={20}></Box>
         <Box mr={3}>Total Package Cost</Box>
         <Box mr={3} bgcolor="#FFA500" width={20} height={20}></Box>
@@ -112,13 +120,13 @@ const SimpleBarChart = () => {
         <Box mr={3} bgcolor="#FFD700" width={20} height={20}></Box>
         <Box mr={3}>Travel and Food Costs</Box>
         <Box mr={3} bgcolor="#49759C" width={20} height={20}></Box>
-        <Box>Total Opportunity Cost</Box>
+        <Box mr={3}> Total Opportunity Cost</Box>
         <Box mr={3} bgcolor="#290086" width={20} height={20}></Box>
         <Box>Total Cost/Patient</Box>
       </Box>
 
       {/* Data Table */}
-      <TableContainer component={Paper} style={{ marginTop: '10px', width: '100%', maxWidth: '1200px', border: '1px solid black' }}>
+      <TableContainer component={Paper} style={{ marginTop: '10px', width: '100%', maxWidth: '1200px', border: '1px solid black', marginLeft: '150px' }}>
   <Table sx={{ minWidth: 650 }} size="small" aria-label="sample dense table">
     <TableHead>
       <TableRow>
@@ -163,13 +171,16 @@ const SimpleBarChart = () => {
           color: 'white',
           padding: '10px',
           textAlign: 'center',
-          marginTop: '30px',
+          marginTop: '40px',
+          marginLeft: '125px',
           borderRadius: '7px',
           fontSize: '15px',
-          maxWidth: '1900px', // Adjust width as needed
+          maxWidth: '2000px', 
         }}
       >
+        <Typography variant="body1">
         VABYSMO<sup>®</sup> is the FIRST & ONLY FDA-approved treatment designed to BLOCK 2 CAUSES of vision loss (VEGF & Ang-2)
+        </Typography>
       </Box>
     </Box>
   );

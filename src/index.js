@@ -42,7 +42,7 @@ function AppRouter() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.post('https://i-open.roche.com/submit', formData);
+        const response = await axios.post('https://i-open-backend.onrender.com/submit', formData);
         setResponseData(response.data);
 
         console.log(response.data);

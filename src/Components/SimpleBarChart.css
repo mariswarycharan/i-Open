@@ -1,26 +1,22 @@
 .total-package-cost-page {
     margin: 0;
-    padding: 10px; /* Adjust padding as needed */
+    padding: 10px; 
 }
 
 .home-icon-container {
-    margin-bottom: 10px; /* Adjust spacing between the home icon and other elements */
+    margin-bottom: 10px; 
 }
 
 .outlined-heading {
-    margin-bottom: 20px; /* Adjust spacing below the heading */
+    margin-bottom: 20px; 
 }
 
 .rotated-table {
-    margin-left: 10px; /* Adjust spacing from the left for rotated tables */
+    margin-left: 10px; 
 }
 
 .chart-container {
-    margin-bottom: 20px; /* Adjust spacing between chart containers */
-}
-.molecule-compare-table {
-    margin-top: 10px; /* Adjust spacing above the molecule compare table */
-    margin-bottom: 20px; /* Adjust spacing below the molecule compare table */
+    margin-bottom: 20px; 
 }
 
 .simple-bar-chart {

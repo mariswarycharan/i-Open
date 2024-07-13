@@ -6,7 +6,8 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    z-index: 999;     /* Ensure buttons appear above other content */
+    z-index: 999;     
+    
 }
 
 /* Common button styling */

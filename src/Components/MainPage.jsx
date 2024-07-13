@@ -94,11 +94,13 @@ const MainPage = () => {
                         value="Government Account"
                         control={<Radio />}
                         label="Government Account"
+                        sx={{ marginLeft: 2 }} 
                     />
                     <StyledFormControlLabel
                         value="Trade Account"
                         control={<Radio />}
                         label="Trade Account"
+                        sx={{ marginLeft: 2 }} 
                     />
                 </RadioGroup>
 

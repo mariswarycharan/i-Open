@@ -1,7 +1,8 @@
 /* MainPage.css */
 .main-page {
     display: flex;
-    height: 100vh; /* Full viewport height */
+    height: 100vh; 
+    margin-right: 10px;
 }
 
 .sidebar-container {
